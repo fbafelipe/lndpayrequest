@@ -1,0 +1,877 @@
+2019-07-13T20:50:19Z 
+
+
+
+
+2019-07-13T20:50:19Z Bitcoin Core version v0.17.1 (release build)
+2019-07-13T20:50:19Z InitParameterInteraction: parameter interaction: -whitelistforcerelay=1 -> setting -whitelistrelay=1
+2019-07-13T20:50:19Z Validating signatures for all blocks.
+2019-07-13T20:50:19Z Setting nMinimumChainWork=0000000000000000000000000000000000000000000000000000000000000000
+2019-07-13T20:50:19Z Using the 'sse4(1way),sse41(4way),avx2(8way)' SHA256 implementation
+2019-07-13T20:50:19Z Using RdRand as an additional entropy source
+2019-07-13T20:50:19Z Default data directory /home/felipe/.bitcoin
+2019-07-13T20:50:19Z Using data directory /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest
+2019-07-13T20:50:19Z Using config file /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/bitcoin.conf
+2019-07-13T20:50:19Z Using at most 125 automatic connections (1024 file descriptors available)
+2019-07-13T20:50:19Z Warning: relative datadir option 'bitcoind' specified, which will be interpreted relative to the current working directory '/home/felipe/projetos/eclipse/LndPayRequest/test/integration/base'. This is fragile, because if bitcoin is started in the future from a different location, it will be unable to locate the current data files. There could also be data loss if bitcoin is started while in a temporary directory.
+2019-07-13T20:50:19Z Using 16 MiB out of 32/2 requested for signature cache, able to store 524288 elements
+2019-07-13T20:50:19Z Using 16 MiB out of 32/2 requested for script execution cache, able to store 524288 elements
+2019-07-13T20:50:19Z Using 4 threads for script verification
+2019-07-13T20:50:19Z scheduler thread start
+2019-07-13T20:50:19Z Binding RPC on address 0.0.0.0 port 18443 failed.
+2019-07-13T20:50:19Z HTTP: creating work queue of depth 16
+2019-07-13T20:50:19Z Config options rpcuser and rpcpassword will soon be deprecated. Locally-run instances may remove rpcuser to use cookie-based auth, or may be replaced with rpcauth. Please see share/rpcauth for rpcauth auth generation.
+2019-07-13T20:50:19Z HTTP: starting 4 worker threads
+2019-07-13T20:50:19Z Using wallet directory /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/wallets
+2019-07-13T20:50:19Z init message: Verifying wallet(s)...
+2019-07-13T20:50:19Z Using BerkeleyDB version Berkeley DB 4.8.30: (April  9, 2010)
+2019-07-13T20:50:19Z Using wallet wallet.dat
+2019-07-13T20:50:19Z BerkeleyEnvironment::Open: LogDir=/home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/wallets/database ErrorFile=/home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/wallets/db.log
+2019-07-13T20:50:19Z Cache configuration:
+2019-07-13T20:50:19Z * Using 2.0MiB for block index database
+2019-07-13T20:50:19Z * Using 56.0MiB for transaction index database
+2019-07-13T20:50:19Z * Using 8.0MiB for chain state database
+2019-07-13T20:50:19Z * Using 384.0MiB for in-memory UTXO set (plus up to 286.1MiB of unused mempool space)
+2019-07-13T20:50:19Z init message: Loading block index...
+2019-07-13T20:50:19Z Opening LevelDB in /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/blocks/index
+2019-07-13T20:50:19Z Opened LevelDB successfully
+2019-07-13T20:50:19Z Using obfuscation key for /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/blocks/index: 0000000000000000
+2019-07-13T20:50:19Z LoadBlockIndexDB: last block file = 0
+2019-07-13T20:50:19Z LoadBlockIndexDB: last block file info: CBlockFileInfo(blocks=0, size=0, heights=0...0, time=1970-01-01...1970-01-01)
+2019-07-13T20:50:19Z Checking all blk files are present...
+2019-07-13T20:50:19Z Initializing databases...
+2019-07-13T20:50:19Z Pre-allocating up to position 0x1000000 in blk00000.dat
+2019-07-13T20:50:19Z Opening LevelDB in /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/chainstate
+2019-07-13T20:50:19Z Opened LevelDB successfully
+2019-07-13T20:50:19Z Wrote new obfuscate key for /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/chainstate: 9ca766e6b63d2b8b
+2019-07-13T20:50:19Z Using obfuscation key for /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/chainstate: 9ca766e6b63d2b8b
+2019-07-13T20:50:19Z init message: Rewinding blocks...
+2019-07-13T20:50:19Z  block index             100ms
+2019-07-13T20:50:19Z Opening LevelDB in /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/indexes/txindex
+2019-07-13T20:50:19Z Opened LevelDB successfully
+2019-07-13T20:50:19Z Using obfuscation key for /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/indexes/txindex: 0000000000000000
+2019-07-13T20:50:19Z init message: Loading wallet...
+2019-07-13T20:50:19Z txindex thread start
+2019-07-13T20:50:19Z txindex is enabled
+2019-07-13T20:50:19Z txindex thread exit
+2019-07-13T20:50:20Z [default wallet] nFileVersion = 170100
+2019-07-13T20:50:20Z [default wallet] Keys: 0 plaintext, 0 encrypted, 0 w/ metadata, 0 total. Unknown wallet records: 0
+2019-07-13T20:50:20Z [default wallet] Performing wallet upgrade to 169900
+2019-07-13T20:50:21Z [default wallet] keypool added 2000 keys (1000 internal), size=2000 (1000 internal)
+2019-07-13T20:50:21Z [default wallet] Wallet completed loading in            1420ms
+2019-07-13T20:50:21Z [default wallet] setKeyPool.size() = 2000
+2019-07-13T20:50:21Z [default wallet] mapWallet.size() = 0
+2019-07-13T20:50:21Z [default wallet] mapAddressBook.size() = 0
+2019-07-13T20:50:21Z UpdateTip: new best=0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206 height=0 version=0x00000001 log2_work=1 tx=1 date='2011-02-02T23:16:42Z' progress=1.000000 cache=0.0MiB(0txo)
+2019-07-13T20:50:21Z Failed to open mempool file from disk. Continuing anyway.
+2019-07-13T20:50:21Z mapBlockIndex.size() = 1
+2019-07-13T20:50:21Z nBestHeight = 0
+2019-07-13T20:50:21Z torcontrol thread start
+2019-07-13T20:50:21Z AddLocal([2804:14d:baa7:9674::1002]:18444,1)
+2019-07-13T20:50:21Z Discover: IPv6 eth0: 2804:14d:baa7:9674::1002
+2019-07-13T20:50:21Z AddLocal([2804:14d:baa7:9674:a9b7:1a30:d60f:600a]:18444,1)
+2019-07-13T20:50:21Z Discover: IPv6 eth0: 2804:14d:baa7:9674:a9b7:1a30:d60f:600a
+2019-07-13T20:50:21Z AddLocal([2804:14d:baa7:9674:a97e:1917:7ea7:dac0]:18444,1)
+2019-07-13T20:50:21Z Discover: IPv6 eth0: 2804:14d:baa7:9674:a97e:1917:7ea7:dac0
+2019-07-13T20:50:21Z Bound to [::]:18444
+2019-07-13T20:50:21Z Bound to 0.0.0.0:18444
+2019-07-13T20:50:21Z init message: Loading P2P addresses...
+2019-07-13T20:50:21Z ERROR: DeserializeFileDB: Failed to open file /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/peers.dat
+2019-07-13T20:50:21Z Invalid or missing peers.dat; recreating
+2019-07-13T20:50:21Z init message: Loading banlist...
+2019-07-13T20:50:21Z ERROR: DeserializeFileDB: Failed to open file /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/banlist.dat
+2019-07-13T20:50:21Z Invalid or missing banlist.dat; recreating
+2019-07-13T20:50:21Z init message: Starting network threads...
+2019-07-13T20:50:21Z net thread start
+2019-07-13T20:50:21Z addcon thread start
+2019-07-13T20:50:21Z dnsseed thread start
+2019-07-13T20:50:21Z opencon thread start
+2019-07-13T20:50:21Z Loading addresses from DNS seeds (could take a while)
+2019-07-13T20:50:21Z init message: Done loading
+2019-07-13T20:50:21Z 0 addresses found from DNS seeds
+2019-07-13T20:50:21Z dnsseed thread exit
+2019-07-13T20:50:21Z msghand thread start
+2019-07-13T20:50:32Z [default wallet] keypool reserve 1
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 936 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z Pre-allocating up to position 0x100000 in rev00000.dat
+2019-07-13T20:50:32Z Leaving InitialBlockDownload (latching to false)
+2019-07-13T20:50:32Z UpdateTip: new best=7dba10e7063858601a7fa868d34b973626a245909bd333813f637fd8dab4cdde height=1 version=0x20000000 log2_work=2 tx=2 date='2019-07-13T20:50:32Z' progress=1.000000 cache=0.0MiB(1txo)
+2019-07-13T20:50:32Z [default wallet] keypool keep 1
+2019-07-13T20:50:32Z [default wallet] AddToWallet 68d061ea6e31519f12a2ae86b12ddee6f98bd9a7a9ab570b0370e69bed6b4f46  new
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 936 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z UpdateTip: new best=5c33d456c6b30b3a1b6e0811f6dcae0725049f47afcd7d7b72318180f3f8902b height=2 version=0x20000000 log2_work=2.5849625 tx=3 date='2019-07-13T20:50:33Z' progress=1.000000 cache=0.0MiB(2txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 936 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z UpdateTip: new best=795cc898435e91885f77bf68308a9c17e906ef5e7ebadafee98dafb66d7a3a71 height=3 version=0x20000000 log2_work=3 tx=4 date='2019-07-13T20:50:33Z' progress=1.000000 cache=0.0MiB(3txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 936 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z UpdateTip: new best=0d9ee9de70d8c0edb0dfb66576e9ae1d4f1a6686e8c4d92b79acfa9404dca07a height=4 version=0x20000000 log2_work=3.3219281 tx=5 date='2019-07-13T20:50:34Z' progress=1.000000 cache=0.0MiB(4txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 936 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z UpdateTip: new best=521e27d030c87c33e847dbcc002809de9227bf174a236e577d741598046b4db6 height=5 version=0x20000000 log2_work=3.5849625 tx=6 date='2019-07-13T20:50:34Z' progress=1.000000 cache=0.0MiB(5txo)
+2019-07-13T20:50:32Z [default wallet] AddToWallet 14b285ca3329d66160f8bfe841fcfa561e4379b0163d88a3f4113d555a92ce47  new
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 936 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z UpdateTip: new best=1bb492fdca7d96732dcd360d865d66fde8bf314b45fae9759963d0249c849a13 height=6 version=0x20000000 log2_work=3.8073549 tx=7 date='2019-07-13T20:50:34Z' progress=1.000000 cache=0.0MiB(6txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 936 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet bb07285306afab3d49deca8ad8622a49c854e2d2d4bfde60722b2db84bf9acfe  new
+2019-07-13T20:50:32Z UpdateTip: new best=2dac8f0154c222642dd37921671c37b1bcf5b96e5c6ca47430aa76f353f6b559 height=7 version=0x20000000 log2_work=4 tx=8 date='2019-07-13T20:50:34Z' progress=1.000000 cache=0.0MiB(7txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 936 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 69c2855a7fa89d833024c2ed110c9df93a2ba99409220e6ae890a1ed0e9a9fef  new
+2019-07-13T20:50:32Z UpdateTip: new best=1e1c5fd157cb65a710d765e3b83803e60d2824802ed16d8b18389ac89c20f5ca height=8 version=0x20000000 log2_work=4.169925 tx=9 date='2019-07-13T20:50:35Z' progress=1.000000 cache=0.0MiB(8txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 936 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet f73e3eb8b5c663fe70203cdc1f9b00d22fe0bb064e2c873ac4a1aeafebaeb582  new
+2019-07-13T20:50:32Z UpdateTip: new best=1eadc851159a511586bf41ad00602f2ddeeb2a5797f5881d2ea911b1adc53ad6 height=9 version=0x20000000 log2_work=4.3219281 tx=10 date='2019-07-13T20:50:35Z' progress=1.000000 cache=0.0MiB(9txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 936 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z UpdateTip: new best=20ca03ebb5535a4cd8a0aef6ab96a618cf9f0df10f9459f4c413da1bae356d4f height=10 version=0x20000000 log2_work=4.4594316 tx=11 date='2019-07-13T20:50:35Z' progress=1.000000 cache=0.0MiB(10txo)
+2019-07-13T20:50:32Z [default wallet] AddToWallet 09a6d068f06e28337f4626beac63baeff9237f325693ca6fc2210d6bbe32df97  new
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 936 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z UpdateTip: new best=7b3d2f0b7dc2b884603e39ed8bc4b231d464f7b9f7265531329d86ddca4e26b9 height=11 version=0x20000000 log2_work=4.5849625 tx=12 date='2019-07-13T20:50:35Z' progress=1.000000 cache=0.0MiB(11txo)
+2019-07-13T20:50:32Z [default wallet] AddToWallet 40c4dc8d8015ca8473e7c4576892e5d0f95b898a822c513789fa8e2d8f894fab  new
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 936 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 7cf4855a046a80eb6c12940ec9c2d6fc645aa8a7a9e1d60ec8650a5cf36e1866  new
+2019-07-13T20:50:32Z UpdateTip: new best=2918ff673decd61bdae95a3665767f43e7145bcf854c78891d8c95a23768c9b1 height=12 version=0x20000000 log2_work=4.7004397 tx=13 date='2019-07-13T20:50:35Z' progress=1.000000 cache=0.0MiB(12txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 936 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 48fff172bcad8d989298fad9ff9c48f2c7cde116d97b9bcc92d2898b8ad617fb  new
+2019-07-13T20:50:32Z UpdateTip: new best=52ba5d384437f455c04267f39b78d051a7aa26d05f25afd0b18894552084a397 height=13 version=0x20000000 log2_work=4.8073549 tx=14 date='2019-07-13T20:50:35Z' progress=1.000000 cache=0.0MiB(13txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 936 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet be6d14f1e17b33cf12801190775bee501ed1e7f5ea1953d53fbfaafdafcaa65f  new
+2019-07-13T20:50:32Z UpdateTip: new best=491a0001c641a0bcc63a811fa59d443567a52bb398d9e4c8f40a9b368f1f37ad height=14 version=0x20000000 log2_work=4.9068906 tx=15 date='2019-07-13T20:50:36Z' progress=1.000000 cache=0.0MiB(14txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 936 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 16247bdeb5787a62503e88687cf5c6b0a99616c3a357b15b168c03b1aa6020ab  new
+2019-07-13T20:50:32Z UpdateTip: new best=20f63b50e336867e40740eaca97d7f2bf4af1b4cd1b7a09fc7cbc1cb655ee871 height=15 version=0x20000000 log2_work=5 tx=16 date='2019-07-13T20:50:36Z' progress=1.000000 cache=0.0MiB(15txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 936 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 8eb4f89de3ac617b1ffa594a5fef8b895d72467badf9fa1179813f5aa3efd74d  new
+2019-07-13T20:50:32Z UpdateTip: new best=005793d4862229d722eb4656fe7aaa178465b2aaa01127d60f5ac6cd21e27ba3 height=16 version=0x20000000 log2_work=5.0874628 tx=17 date='2019-07-13T20:50:36Z' progress=1.000000 cache=0.0MiB(16txo)
+2019-07-13T20:50:32Z [default wallet] AddToWallet 1b5c9f310ca4ab0496ab5a354c3a8089cbb1c9cf0ea0a16ed4afc5a94bc0288d  new
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 66fbbb832345bfc9ecfbc49ecae5f7150b67cd0acef8e4eefa05a9df07508d94  new
+2019-07-13T20:50:32Z UpdateTip: new best=6c4d329d644800c10395b89a734c0a3c7344613a7f21cc64c2beabd84801b44d height=17 version=0x20000000 log2_work=5.169925 tx=18 date='2019-07-13T20:50:36Z' progress=1.000000 cache=0.0MiB(17txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 5018d4b7f2be3acda7a53e9b3099e92664fbe392ee71061870aa834b4a2ae8bb  new
+2019-07-13T20:50:32Z UpdateTip: new best=78b6be67b70e572f717681b56eebc25fe4feeb104a57feb44da6b6a63c141a4e height=18 version=0x20000000 log2_work=5.2479275 tx=19 date='2019-07-13T20:50:36Z' progress=1.000000 cache=0.0MiB(18txo)
+2019-07-13T20:50:32Z [default wallet] AddToWallet 11fc8bf0ed964c662fe8e3ae80026f9968a3b4c0f861424910ec5c346d7dc175  new
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 40bbb7b9aae6e7b2532485c1a769498ed44f578efb045c7e01020a9655b96dd3  new
+2019-07-13T20:50:32Z UpdateTip: new best=59bf4dab4f744579ec51de487677b12eb59d0abdfa941db25b1c5b79d0c78ad1 height=19 version=0x20000000 log2_work=5.3219281 tx=20 date='2019-07-13T20:50:36Z' progress=1.000000 cache=0.0MiB(19txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z UpdateTip: new best=6781b8fee38c267c7ec8b1cb2818e597ee9fb918fec05b6f71a992190cb867e1 height=20 version=0x20000000 log2_work=5.3923174 tx=21 date='2019-07-13T20:50:37Z' progress=1.000000 cache=0.0MiB(20txo)
+2019-07-13T20:50:32Z [default wallet] AddToWallet eac2095e570db75b0789ca05fe863fa1e8d052b7221765bdd04ed36e122a4354  new
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 6b5ba8f4717105daf944594105b7d901f230e52f5020b549c669197fa1522dae  new
+2019-07-13T20:50:32Z UpdateTip: new best=4b751a32e2f9f6da48409b0b4dd28fe09b28c3bea62660380391fd3a39ee8269 height=21 version=0x20000000 log2_work=5.4594316 tx=22 date='2019-07-13T20:50:37Z' progress=1.000000 cache=0.0MiB(21txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet f7654b875c9ed3884906f5d51ee9a143c1f03bc706102b2fd22217f8ef7025c3  new
+2019-07-13T20:50:32Z UpdateTip: new best=360621074a0520b04d283a07086e81454386281b7861acd192c7cf629458da6b height=22 version=0x20000000 log2_work=5.523562 tx=23 date='2019-07-13T20:50:37Z' progress=1.000000 cache=0.0MiB(22txo)
+2019-07-13T20:50:32Z [default wallet] AddToWallet c24ea5b7be0ca1a5505a92b7cd6798bbc36a5188f17603c10ad1c0fe43b77d69  new
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 077c98df696ac6b57e2887b26c03f0f0b8e031e519027efeb41a88c67198a94a  new
+2019-07-13T20:50:32Z UpdateTip: new best=3d215d6ab70edc43cb79365321e4da9e1cc323c06ddcacd60075afe9d824d3d0 height=23 version=0x20000000 log2_work=5.5849625 tx=24 date='2019-07-13T20:50:37Z' progress=1.000000 cache=0.0MiB(23txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 5928c8016da2faafd848461dbcb207c96ca7940fa93031cbc6c130b865f4dc50  new
+2019-07-13T20:50:32Z UpdateTip: new best=1f7213265a3121389484e5a3e22fbd0137307d37592b67d2668c7c60cb5b7d21 height=24 version=0x20000000 log2_work=5.6438562 tx=25 date='2019-07-13T20:50:37Z' progress=1.000000 cache=0.0MiB(24txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet b3f2f85e9cf7408fc0cc4ec44f9392de77effd8f42069ed61c551062a128824e  new
+2019-07-13T20:50:32Z UpdateTip: new best=63647a12e25f619aff21af8da7078fbea10ad0ed90231379612b81aea82f6faa height=25 version=0x20000000 log2_work=5.7004397 tx=26 date='2019-07-13T20:50:37Z' progress=1.000000 cache=0.0MiB(25txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 16c9cd631207f18031add2db872764e9a4170586a65dba17576ba7b4595319ff  new
+2019-07-13T20:50:32Z UpdateTip: new best=4260870cf4049e6b4b459ded1e6084ee295cd106d828c6214f91e6c8748f2c04 height=26 version=0x20000000 log2_work=5.7548875 tx=27 date='2019-07-13T20:50:38Z' progress=1.000000 cache=0.0MiB(26txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 4145e9ffcf50b5a2793cbe9e5ddfdf40dbc0b8b52070ba37545ac132d091d32f  new
+2019-07-13T20:50:32Z UpdateTip: new best=65e8f2c714bb6be5d59d5ecbe96e348edf7da358beec43b1a8a42886cdab54ad height=27 version=0x20000000 log2_work=5.8073549 tx=28 date='2019-07-13T20:50:38Z' progress=1.000000 cache=0.0MiB(27txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 77fb1350a1c0a05776e3e2df344fb044377bcd488e596a3aadfbeec8bb345979  new
+2019-07-13T20:50:32Z UpdateTip: new best=1fbb9663b009fb8a4042af69734e4eb284e9513b9508922591b8c5e56483e9db height=28 version=0x20000000 log2_work=5.857981 tx=29 date='2019-07-13T20:50:38Z' progress=1.000000 cache=0.0MiB(28txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet fbb7d60811d662115eb6890223ed71bdb3575de01ede5105824a49c5486f3ed2  new
+2019-07-13T20:50:32Z UpdateTip: new best=1f2573cc3b9919be1651e0a29cdec6747d0f65e4ecb9d31cc6a76ab02995b3c8 height=29 version=0x20000000 log2_work=5.9068906 tx=30 date='2019-07-13T20:50:38Z' progress=1.000000 cache=0.0MiB(29txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 021a0ce074ae7f007e86ccc6cd643069517416ab4b2348f70133255314f2baee  new
+2019-07-13T20:50:32Z UpdateTip: new best=694d9c4e92e65551ba7a874068bc7446625be55b5b4580419641d2a98e523b2b height=30 version=0x20000000 log2_work=5.9541963 tx=31 date='2019-07-13T20:50:38Z' progress=1.000000 cache=0.0MiB(30txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet c647bd4f1cb694acc222790d0ea294a8b60730d2479d9436fd0bf4ac01fe4c44  new
+2019-07-13T20:50:32Z UpdateTip: new best=3228b2eff59d833fb4e0842a1b6edc84617a969e3ee8eb30c6a300c9794e8e0c height=31 version=0x20000000 log2_work=6 tx=32 date='2019-07-13T20:50:38Z' progress=1.000000 cache=0.0MiB(31txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet bbf061dd3cdfe3603d36b239a70d6601f0e1599b8bd4176eaa404a7c85598e67  new
+2019-07-13T20:50:32Z UpdateTip: new best=32ac4419ba90cf2840f0d9fe3efed40c6273dbcd5b9d8a8cf924d0464d96451c height=32 version=0x20000000 log2_work=6.0443941 tx=33 date='2019-07-13T20:50:39Z' progress=1.000000 cache=0.0MiB(32txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 5a6f52208837c9b93b5aa65bbf62acbe747e83d9a7c7365ab3468a99879f7b37  new
+2019-07-13T20:50:32Z UpdateTip: new best=585fb3397b74ce157c3455d0ead3feb8ddf065a2d286e45e86ff7f639b7457f8 height=33 version=0x20000000 log2_work=6.0874628 tx=34 date='2019-07-13T20:50:39Z' progress=1.000000 cache=0.0MiB(33txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet b0ee56108e9b0e59792552c7cdbca4669efa5a91835a9ed643357887a22e57bb  new
+2019-07-13T20:50:32Z UpdateTip: new best=76a9a21420f3359f054163e6a38f047cc9671cf10301f4df98bc130bfd224766 height=34 version=0x20000000 log2_work=6.129283 tx=35 date='2019-07-13T20:50:39Z' progress=1.000000 cache=0.0MiB(34txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 7c51611b2fbd00b949a8b7dadb95422ff7c3b2e04f05231d667fa4daeb011894  new
+2019-07-13T20:50:32Z UpdateTip: new best=719b26d76e0365e25ad512a005b05440612c5034182d637a5dbd783e80625500 height=35 version=0x20000000 log2_work=6.169925 tx=36 date='2019-07-13T20:50:39Z' progress=1.000000 cache=0.0MiB(35txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 0d3dc459877f5eb14f52bbbe690252d91c3e68a1eda3ca3f8cb0d4871cc84349  new
+2019-07-13T20:50:32Z UpdateTip: new best=4b5e87a3152863200d8c489887f736f9c8e707fefa604bc8be920a7826c29c43 height=36 version=0x20000000 log2_work=6.2094534 tx=37 date='2019-07-13T20:50:39Z' progress=1.000000 cache=0.0MiB(36txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 239897e3075f3e4206f31a325dae7b7b6a4bd8264780899935c2391a0893e014  new
+2019-07-13T20:50:32Z UpdateTip: new best=4ee82babf667b20fb126012f29c8987e7dcfbf1eede9d187aeab6e109658dae2 height=37 version=0x20000000 log2_work=6.2479275 tx=38 date='2019-07-13T20:50:39Z' progress=1.000000 cache=0.0MiB(37txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 83f147ce08ce8312fe61c06d7b67917c6b4a3ab992ee942c0066b947ae476749  new
+2019-07-13T20:50:32Z UpdateTip: new best=6e722dcabc2ee1ef5bfe5b393b3afe3633f3e087c21d0da5d8c3e1d4b31622cc height=38 version=0x20000000 log2_work=6.2854022 tx=39 date='2019-07-13T20:50:40Z' progress=1.000000 cache=0.0MiB(38txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 01d6445a96345d42966885a3ccca28e47bb5047e6e33b4964af249500f90ec68  new
+2019-07-13T20:50:32Z UpdateTip: new best=7bdac257bea4f42a7b95258794cc56378e0c6469c65176b3b5cf4edf55ed1ce7 height=39 version=0x20000000 log2_work=6.3219281 tx=40 date='2019-07-13T20:50:40Z' progress=1.000000 cache=0.0MiB(39txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 0a4a8b016469a85619c01c9f75418f7e4d4bea2caa2b3f789eeffdeead32e1f1  new
+2019-07-13T20:50:32Z UpdateTip: new best=6e043bdfcc567ff68b49b5cee9a08f59cf588f8e7c16b154e9c9b630e6a37f43 height=40 version=0x20000000 log2_work=6.357552 tx=41 date='2019-07-13T20:50:40Z' progress=1.000000 cache=0.0MiB(40txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 5ab700bf8094107a3f22a22c4c4a29dfe0b854a80e20b43dccae22a20c224b5b  new
+2019-07-13T20:50:32Z UpdateTip: new best=51a7c2eda38f8472a926a55c425daba825a78f047f601c425a0f3ef285e94726 height=41 version=0x20000000 log2_work=6.3923174 tx=42 date='2019-07-13T20:50:40Z' progress=1.000000 cache=0.0MiB(41txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 73ea7f78d90db988be536855eefaa02f0c8dec7d6fc4ae0df331efccc3bf10d9  new
+2019-07-13T20:50:32Z UpdateTip: new best=7cceedc2fc2f5240c0279e17693c179466ec218d1094eddea837a6c3adf198e3 height=42 version=0x20000000 log2_work=6.4262648 tx=43 date='2019-07-13T20:50:40Z' progress=1.000000 cache=0.0MiB(42txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 6a7959ac4ec72d43088b29864de1ad96d446e0d492f1051d3438778905e857c3  new
+2019-07-13T20:50:32Z UpdateTip: new best=1ff9a2a175b902158e0050760a58645ed0e37a16523566a29caa79e343fcfe2f height=43 version=0x20000000 log2_work=6.4594316 tx=44 date='2019-07-13T20:50:40Z' progress=1.000000 cache=0.0MiB(43txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet b990210077befbe4a37c345c3ea556061a7d66e2d25745b297c5bdf7b71b0a36  new
+2019-07-13T20:50:32Z UpdateTip: new best=20252842e67afa37e296a1ca31647a7a6ec5036d9404e0a90f2470356bce4f51 height=44 version=0x20000000 log2_work=6.4918531 tx=45 date='2019-07-13T20:50:41Z' progress=1.000000 cache=0.0MiB(44txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet b57245552b21ac8dc35f18867c065034f46193171aea4a3e1f92e4cfde5519ef  new
+2019-07-13T20:50:32Z UpdateTip: new best=7b9be182caddd0d18359c91ffe72fdf3af4ff2de543b3230475afaa7d1b213b0 height=45 version=0x20000000 log2_work=6.523562 tx=46 date='2019-07-13T20:50:41Z' progress=1.000000 cache=0.0MiB(45txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet d1d7e9b44a5d8e22cd27b5356e1fe588a9a4df5cf2645645db20add5182ca102  new
+2019-07-13T20:50:32Z UpdateTip: new best=4e479affed07c0185a90c8a4d9df96424c2aced26d867aeb8211fdec5ea801ff height=46 version=0x20000000 log2_work=6.5545889 tx=47 date='2019-07-13T20:50:41Z' progress=1.000000 cache=0.0MiB(46txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 359c85e3dfb5b7770c3f9d8c6b55b73ce1a23c044a7f5586a417c9566f698d80  new
+2019-07-13T20:50:32Z UpdateTip: new best=2826d708a9119adea7c00d15adbff13a6b5b48d80da950d3e456fe0db77830e0 height=47 version=0x20000000 log2_work=6.5849625 tx=48 date='2019-07-13T20:50:41Z' progress=1.000000 cache=0.0MiB(47txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet abfd42e781e5c8aa7b65c41490447d677337763f9e6b741c30d065529f9642e5  new
+2019-07-13T20:50:32Z UpdateTip: new best=2c36cf88ef453777c067f0dd2f953a73b9a0f796b2cff9467c8b7e8a70264fa6 height=48 version=0x20000000 log2_work=6.6147098 tx=49 date='2019-07-13T20:50:41Z' progress=1.000000 cache=0.0MiB(48txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet bdb45e81e681a83b3937b39d9ff726fbb2ec1407c9fa3dd4bc1ce26793709454  new
+2019-07-13T20:50:32Z UpdateTip: new best=6b08f24c38a9d23583b1657dc1201ad9b57c2137f8b81b61d959899772f1b1b8 height=49 version=0x20000000 log2_work=6.6438562 tx=50 date='2019-07-13T20:50:41Z' progress=1.000000 cache=0.0MiB(49txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 13f2c387f4333a8303cdeac6665127b1232ce510c9cc1f544a89ea1313af8a9a  new
+2019-07-13T20:50:32Z UpdateTip: new best=30c7de8826ac1c0690eda1cf46cd97501b9f35e9f8b49c87b5702d35e1c4665b height=50 version=0x20000000 log2_work=6.6724253 tx=51 date='2019-07-13T20:50:42Z' progress=1.000000 cache=0.0MiB(50txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet a8cbbe6b2c14b72bd7f2b9c3f7330929188b69b6f66aaf4d385d5574b699da72  new
+2019-07-13T20:50:32Z UpdateTip: new best=07eb05ac82079e12900c5d9e7a278826690c0e3f84774cf530d86bbe9c843bd2 height=51 version=0x20000000 log2_work=6.7004397 tx=52 date='2019-07-13T20:50:42Z' progress=1.000000 cache=0.0MiB(51txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 16d2d92e15cef6755b12a8f741a8c55c7e17b5fd980fe0e99103e8ee347b31a6  new
+2019-07-13T20:50:32Z UpdateTip: new best=6300f54ea7f3f8ac6a1ded5fec703a3ac7a58c995acc10aab138dc3a8f5db528 height=52 version=0x20000000 log2_work=6.7279205 tx=53 date='2019-07-13T20:50:42Z' progress=1.000000 cache=0.0MiB(52txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 0772d438ac90955004e9ced0f06a105bc3e52cae6e51f85c24ee1e93e5362929  new
+2019-07-13T20:50:32Z UpdateTip: new best=5800e62197dc1d1b4b507ec9787485c2961d9a23f18afad88613f03bee5fc07a height=53 version=0x20000000 log2_work=6.7548875 tx=54 date='2019-07-13T20:50:42Z' progress=1.000000 cache=0.0MiB(53txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet c56df09783b162b26bf5cc921adf78666b6607f96da72d1abec9f8eb9f16e642  new
+2019-07-13T20:50:32Z UpdateTip: new best=0703cfe06d9cd81c317b39d88444f8cfd4fa09d9ded8623ac467b35a08921aea height=54 version=0x20000000 log2_work=6.7813597 tx=55 date='2019-07-13T20:50:42Z' progress=1.000000 cache=0.0MiB(54txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 0f83e2f01f5f1c0e658e724fa8d0c2c883808aa8c818671ddc3dde23247e0a3c  new
+2019-07-13T20:50:32Z UpdateTip: new best=1698fcb87a6affc787b5fb4751c94af48e6d2d00af48bf33fda0c42033faac16 height=55 version=0x20000000 log2_work=6.8073549 tx=56 date='2019-07-13T20:50:42Z' progress=1.000000 cache=0.0MiB(55txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet b11947b0f006b17490b8fd0d27b16669c757a9892fcae701da87188c52555a75  new
+2019-07-13T20:50:32Z UpdateTip: new best=2d13a14ddf92f26fdcda1d87001961fa63829b32e64a91974fefa66f9de579d7 height=56 version=0x20000000 log2_work=6.83289 tx=57 date='2019-07-13T20:50:43Z' progress=1.000000 cache=0.0MiB(56txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet d762f22a6f9c97914834ac42517f9178123f17047081365fddfc463d86ad10aa  new
+2019-07-13T20:50:32Z UpdateTip: new best=4936dca2daabb5a3e7ed3c29426a38e4320c1f1092c7f0677cddc63e1213c45e height=57 version=0x20000000 log2_work=6.857981 tx=58 date='2019-07-13T20:50:43Z' progress=1.000000 cache=0.0MiB(57txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet cb4c8064882b055f96f65f56bac79e4229312cc9a39581f730f0d0f8ae8d550c  new
+2019-07-13T20:50:32Z UpdateTip: new best=5430218276c6ece8c01582458d974a2c6466c5ef9a4cbee829594610bebf9dd2 height=58 version=0x20000000 log2_work=6.882643 tx=59 date='2019-07-13T20:50:43Z' progress=1.000000 cache=0.0MiB(58txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 936f0997cc101ffa7e7b625e28d80360936713457308b7b7074e1796826e6c8e  new
+2019-07-13T20:50:32Z UpdateTip: new best=6b9ee857c5d28f45c1207db5d82546c2f549a0a2c02463eb63d9b07df8d317f8 height=59 version=0x20000000 log2_work=6.9068906 tx=60 date='2019-07-13T20:50:43Z' progress=1.000000 cache=0.0MiB(59txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 49163acbf0736677bdf82b9d2f6ddf2189728721c986c8ae6f0ff585618ee587  new
+2019-07-13T20:50:32Z UpdateTip: new best=10f7368f8be52f072dfac9bbb4bb9e86c8cd717cf4d1e74ff4659139994c2e84 height=60 version=0x20000000 log2_work=6.9307373 tx=61 date='2019-07-13T20:50:43Z' progress=1.000000 cache=0.0MiB(60txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet fa5387cb4dc633910716074e7982531f816fea7a8244e517cfb0c01fab99985f  new
+2019-07-13T20:50:32Z UpdateTip: new best=02fe6500b0eab95e1693ace1ff7a1a5836af15d203e6417108fa905e535f72fd height=61 version=0x20000000 log2_work=6.9541963 tx=62 date='2019-07-13T20:50:43Z' progress=1.000000 cache=0.0MiB(61txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 7b29b03b632063eac8a7f98b91c8185f0507c59f8fefec90655415b0359427e3  new
+2019-07-13T20:50:32Z UpdateTip: new best=64acce09e1c25ee496f2108c9a7d438673a2f9f25d958884d1057bc3c6ff46c9 height=62 version=0x20000000 log2_work=6.9772799 tx=63 date='2019-07-13T20:50:44Z' progress=1.000000 cache=0.0MiB(62txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet d3609082553f39f92a89d0cd3fb0b84abf58d4f03513183909df78e2e6da6dea  new
+2019-07-13T20:50:32Z UpdateTip: new best=12510051992d7d183a50eefd32d81ceeed03ae66a1b77f50501a922993fa4d6e height=63 version=0x20000000 log2_work=7 tx=64 date='2019-07-13T20:50:44Z' progress=1.000000 cache=0.0MiB(63txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet d3e8b6a2059259c9ad421259a1e0b04ae38a28cc01bde1905929defacf4d70f7  new
+2019-07-13T20:50:32Z UpdateTip: new best=46633eda44ab6b45881141783f27afd302837df01ada37c0136754692be5c15e height=64 version=0x20000000 log2_work=7.0223678 tx=65 date='2019-07-13T20:50:44Z' progress=1.000000 cache=0.0MiB(64txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 3d11c0b3727d21cec873d9308b507694a68a840ecd59d55fa563054b2fe0209f  new
+2019-07-13T20:50:32Z UpdateTip: new best=702df041cf80d3994482bf505f86a4e79db2d28df349caf97250e15fc0b70656 height=65 version=0x20000000 log2_work=7.0443941 tx=66 date='2019-07-13T20:50:44Z' progress=1.000000 cache=0.0MiB(65txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 690fcff967476fb0baea6934494222aa01282447b54f54c7bdecc53a82050b4f  new
+2019-07-13T20:50:32Z UpdateTip: new best=1cba538b73e7f0d5701477edb28597506f223c37d271cc098c1bcb9ba81641b6 height=66 version=0x20000000 log2_work=7.0660892 tx=67 date='2019-07-13T20:50:44Z' progress=1.000000 cache=0.0MiB(66txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 1b6c7e7bb93c6d0b20e8ed6382a47e7fad4270dc3e72dd62ee6d8954d29c2cf5  new
+2019-07-13T20:50:32Z UpdateTip: new best=7074b99f2d7dd740ff96ac04f4f229e2bad4c9df29d0088b6b22f5af9c76d0fb height=67 version=0x20000000 log2_work=7.0874628 tx=68 date='2019-07-13T20:50:44Z' progress=1.000000 cache=0.0MiB(67txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet f5bf765a2f164d25f9010cf01a1fd70c2f4146c70e31c258665eedaf1fa97e22  new
+2019-07-13T20:50:32Z UpdateTip: new best=21b226d3a6043c51e74da6ea0af112a68f3c15caee55e44a98be934aa2da32e8 height=68 version=0x20000000 log2_work=7.1085245 tx=69 date='2019-07-13T20:50:45Z' progress=1.000000 cache=0.0MiB(68txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet a5cb6665f40ca714bf98875e68bedd90d8b63a226c201d4725f5adfa9c5c3c1d  new
+2019-07-13T20:50:32Z UpdateTip: new best=7f2600ae98dac9867b24c4493b87cdbb405ef137f0b547d66748d96689270d4d height=69 version=0x20000000 log2_work=7.129283 tx=70 date='2019-07-13T20:50:45Z' progress=1.000000 cache=0.0MiB(69txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet ca607f8689a6ec0e18d1b06792183632bc996c89b0bb734d10d9e70fbb74e02c  new
+2019-07-13T20:50:32Z UpdateTip: new best=32bb4ff912653d851eec9fb178b6b625bd472b79043d2ad137f622af1e11421f height=70 version=0x20000000 log2_work=7.1497471 tx=71 date='2019-07-13T20:50:45Z' progress=1.000000 cache=0.0MiB(70txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet de01c1e0d3579babce313cd3d8a75d8313217d1fa25a572838d605c04e3b0bbc  new
+2019-07-13T20:50:32Z UpdateTip: new best=5e20642b3b19917a205186b96da210ee8f429db5f77f55d9b7654796e8ecb8c9 height=71 version=0x20000000 log2_work=7.169925 tx=72 date='2019-07-13T20:50:45Z' progress=1.000000 cache=0.0MiB(71txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet cbd83924d2f12617e5a691bfeeacc26b940065f332c21a7b67e9761249f9fe0d  new
+2019-07-13T20:50:32Z UpdateTip: new best=394cf78cd22334ac65704eb4810c427082e56dd1b39905744b37e29cf3483ce5 height=72 version=0x20000000 log2_work=7.1898246 tx=73 date='2019-07-13T20:50:45Z' progress=1.000000 cache=0.0MiB(72txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 79ad7b2ec1e487955e0db7702fce87157fca264cc1bbcb5b938af2b8b72ddd00  new
+2019-07-13T20:50:32Z UpdateTip: new best=32fa4d54061afd6adceea44048e6a627b21d503af1ebfdf1a1c86d0ff11df534 height=73 version=0x20000000 log2_work=7.2094534 tx=74 date='2019-07-13T20:50:45Z' progress=1.000000 cache=0.0MiB(73txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet a39951715f90c374244cfda9b69e617e8cc36458ef72151620eeb87a7feefbcc  new
+2019-07-13T20:50:32Z UpdateTip: new best=29283eb750cd4bccbe40f2b92ba20641cbc58dedcbd396ba5e50625227bba824 height=74 version=0x20000000 log2_work=7.2288187 tx=75 date='2019-07-13T20:50:46Z' progress=1.000000 cache=0.0MiB(74txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 5663646f1de89f4f3ff3fac48a1399521ecc6f5a68a84e25239e14cd8d6f597a  new
+2019-07-13T20:50:32Z UpdateTip: new best=6c4f5d482ef43aac968abd4ef8a71c229c1d6b7e938c9b14d2c32db43c2cb591 height=75 version=0x20000000 log2_work=7.2479275 tx=76 date='2019-07-13T20:50:46Z' progress=1.000000 cache=0.0MiB(75txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet f0654147d09a4c3f9b8b1c03cb673af7c4d5d8a17b3ef6e5f26e3988c9cb4e72  new
+2019-07-13T20:50:32Z UpdateTip: new best=01ce55657ad8721c9c1e74958608c26bd3af2f844afe716b616098eeeec0b403 height=76 version=0x20000000 log2_work=7.2667865 tx=77 date='2019-07-13T20:50:46Z' progress=1.000000 cache=0.0MiB(76txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 9a71f2ecc975dba3b01ce7021d323cd31e8a47512ff9c5274adb5bdcac0c0664  new
+2019-07-13T20:50:32Z UpdateTip: new best=13d6b3508be541b214d440f7f230241525a3b88d472208421901b40272c30105 height=77 version=0x20000000 log2_work=7.2854022 tx=78 date='2019-07-13T20:50:46Z' progress=1.000000 cache=0.0MiB(77txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 7ee96ee6ef4a5a3da1917525363c103626690a9974ccb9b88e63b69066973d15  new
+2019-07-13T20:50:32Z UpdateTip: new best=68229b45eb1a548d4c15e0e0dedbc0034baf484643a1ba56a75a43364cf55d41 height=78 version=0x20000000 log2_work=7.3037807 tx=79 date='2019-07-13T20:50:46Z' progress=1.000000 cache=0.0MiB(78txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet c7819aae2c4201ebe7baad906bc87719a3e2a1ce0b42a4ac679e44d38b740b5b  new
+2019-07-13T20:50:32Z UpdateTip: new best=2876ba6f26003d09f36c6636c9c6e3391a875350f002077beb316294508022ca height=79 version=0x20000000 log2_work=7.3219281 tx=80 date='2019-07-13T20:50:46Z' progress=1.000000 cache=0.0MiB(79txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 554d6983260c5fee2a330a2c89704eef4a030dc8b99a9b96d7b24974ce9e63e9  new
+2019-07-13T20:50:32Z UpdateTip: new best=3976cfc72f77e8f2ff65effa465a721e12e4f28450c006331f992874ccd3bda8 height=80 version=0x20000000 log2_work=7.33985 tx=81 date='2019-07-13T20:50:47Z' progress=1.000000 cache=0.0MiB(80txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 2b01380334f860646142e2d55609567141c3ca08cf3883facbf282ef6b7e1d17  new
+2019-07-13T20:50:32Z UpdateTip: new best=2066e753c00956fa0bebfc32dea7ddcb4964c4c4e2811938fc1fdd8a716485bd height=81 version=0x20000000 log2_work=7.357552 tx=82 date='2019-07-13T20:50:47Z' progress=1.000000 cache=0.0MiB(81txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 70de0f11d4e681a119eeeb3393432c6f3cf1cfc228e8f6a2f5d105546d093ce6  new
+2019-07-13T20:50:32Z UpdateTip: new best=7fedf65f69811a772269de0dad6413e541928ffde94bab9778097b7732bc217d height=82 version=0x20000000 log2_work=7.3750394 tx=83 date='2019-07-13T20:50:47Z' progress=1.000000 cache=0.0MiB(82txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 2758fd8a3de0ee54a128be914772995da59a5cb7a9497863a0e50488229027e2  new
+2019-07-13T20:50:32Z UpdateTip: new best=30d3b17bf7df54a0a55bd4b1132c0cdf8d5c18abf59a5a1f26b0ffa5933ffe47 height=83 version=0x20000000 log2_work=7.3923174 tx=84 date='2019-07-13T20:50:47Z' progress=1.000000 cache=0.0MiB(83txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet e81536b7c217d70414083d482dfadb8ae20b369de34db1afcb764094f4add867  new
+2019-07-13T20:50:32Z UpdateTip: new best=192566e8aca3f6eb504cd2d31f3d0283cd470e1c93fb5f060628cbdf5eb3a47a height=84 version=0x20000000 log2_work=7.4093909 tx=85 date='2019-07-13T20:50:47Z' progress=1.000000 cache=0.0MiB(84txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 288c3af92e564d541cd9aa4fa5f7e3f5dad0d6670fa320824a024cf6aec1ffe8  new
+2019-07-13T20:50:32Z UpdateTip: new best=1d591a809956c372ee55254c80fbf727d4b81472d244b10d91675b50ac7a4534 height=85 version=0x20000000 log2_work=7.4262648 tx=86 date='2019-07-13T20:50:47Z' progress=1.000000 cache=0.0MiB(85txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet afd404edea2e605ef0ad3f1ad4732338bfda53c28ce2ada96494f2bf4348381d  new
+2019-07-13T20:50:32Z UpdateTip: new best=1d8e8d7c378482bdc64da486205b48cfbee943ba4c7d02c87ec36ee5ea5c6a34 height=86 version=0x20000000 log2_work=7.4429435 tx=87 date='2019-07-13T20:50:48Z' progress=1.000000 cache=0.0MiB(86txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 1c49cf5dd107eb49f99c966d249ab808d78b85e1ff404744a5be2aafa79db91f  new
+2019-07-13T20:50:32Z UpdateTip: new best=10fbab0c4819e243f4e5a2fecb9e701bc7231a3686c0cff4913f91f62a9dacf6 height=87 version=0x20000000 log2_work=7.4594316 tx=88 date='2019-07-13T20:50:48Z' progress=1.000000 cache=0.0MiB(87txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet afbf0b4dc3ef235b81ab0c77f623cc528d83da5a53c02139e46df2b98032d650  new
+2019-07-13T20:50:32Z UpdateTip: new best=081acc533238241e4de15337bab40358726e2a519ac141e75deb1e94cdc82a43 height=88 version=0x20000000 log2_work=7.4757334 tx=89 date='2019-07-13T20:50:48Z' progress=1.000000 cache=0.0MiB(88txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 53c8f6465849b8e104b9bb51f882fc8518437d5f8a6d71f825c1021d920d73b1  new
+2019-07-13T20:50:32Z UpdateTip: new best=4a1e1e9bd9b227cb776f3fd7a9bbd7da8c41be57ede3830b8c50e46921ccf66b height=89 version=0x20000000 log2_work=7.4918531 tx=90 date='2019-07-13T20:50:48Z' progress=1.000000 cache=0.0MiB(89txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet bf787751d77ac8d2bbcdcd9a143e387d2ae1293813da9fa0c9b8998c628a3973  new
+2019-07-13T20:50:32Z UpdateTip: new best=1c80bc37174541bb3465be16331711691aa68b77f3a422474ae095125395db23 height=90 version=0x20000000 log2_work=7.5077946 tx=91 date='2019-07-13T20:50:48Z' progress=1.000000 cache=0.0MiB(90txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet ec6e3ff41c28fff20ecc8543c6c8d5432440a7d0a38661edb3e14229863ceb31  new
+2019-07-13T20:50:32Z UpdateTip: new best=2595302cf6a95fbd80095b617959b124c32e01cad0fa506bd1cf0c7326767700 height=91 version=0x20000000 log2_work=7.523562 tx=92 date='2019-07-13T20:50:48Z' progress=1.000000 cache=0.0MiB(91txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet a6e7e2d14ba5eb37c33ba0e9bd7a4832f45f5f2f0c1af1ee38e2c899b4bb3ed8  new
+2019-07-13T20:50:32Z UpdateTip: new best=7da62f5ffafc4665ec6406cb5150df3e36347a541171018af21cbb6f30b62ce0 height=92 version=0x20000000 log2_work=7.5391588 tx=93 date='2019-07-13T20:50:49Z' progress=1.000000 cache=0.0MiB(92txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet cd1c725ebfafe7dc0e1008f485ee4dda2811f76b65e6ba3c6df3e6826cdcd757  new
+2019-07-13T20:50:32Z UpdateTip: new best=3606403ed82d21154c347d1fc62062ae0188920904f44d5c263a80a5738ff889 height=93 version=0x20000000 log2_work=7.5545889 tx=94 date='2019-07-13T20:50:49Z' progress=1.000000 cache=0.0MiB(93txo)
+2019-07-13T20:50:32Z [default wallet] AddToWallet bc92b3f7c9475947b2baca28294e65c6557d6befd96430ac3aaa035927027568  new
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z UpdateTip: new best=7001b4e38ed5e4efc8f5fe59bd57da3025b3ce9434e5ba9d04234a24af201d87 height=94 version=0x20000000 log2_work=7.5698556 tx=95 date='2019-07-13T20:50:49Z' progress=1.000000 cache=0.0MiB(94txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 9020ddd6c0457a09f064a1d45a7d417ad0da9e54571e387f5ad10981a5ba074b  new
+2019-07-13T20:50:32Z UpdateTip: new best=6475b2cdb63121324d4b929866f1086c3c38e3ca6370bc226c781d506b6965eb height=95 version=0x20000000 log2_work=7.5849625 tx=96 date='2019-07-13T20:50:49Z' progress=1.000000 cache=0.0MiB(95txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 51ccf50e12e9c5add83ae9c3eabd3b151edb56964255c6bf86aa59dc3410732b  new
+2019-07-13T20:50:32Z UpdateTip: new best=147f8407ce8e5096f1a5be947ae35ea9531326491c443632fc5c4da34c0fdde9 height=96 version=0x20000000 log2_work=7.5999128 tx=97 date='2019-07-13T20:50:49Z' progress=1.000000 cache=0.0MiB(96txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet eaaafb2cdd4c08ee5716df097a4929c5cf343bded73e2e6b3e9db0097ce1183d  new
+2019-07-13T20:50:32Z UpdateTip: new best=25d08f163baa2e8807022ed88ed4c97688a46f7b383a5fce8c6446751f70f787 height=97 version=0x20000000 log2_work=7.6147098 tx=98 date='2019-07-13T20:50:49Z' progress=1.000000 cache=0.0MiB(97txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 492f386b61fde911e7794417ce983ae890d4e4f6efd298e25453398edd72fa56  new
+2019-07-13T20:50:32Z UpdateTip: new best=70a64942075c4f3cff81499cff3fe950f0abbd05f860493df487db2fd0e3c87d height=98 version=0x20000000 log2_work=7.6293566 tx=99 date='2019-07-13T20:50:50Z' progress=1.000000 cache=0.0MiB(98txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet c61926497e727f5ca2abe102d030f3a423f08e5165aa71bdfcb7a00f89556a79  new
+2019-07-13T20:50:32Z UpdateTip: new best=590f6655479a421ca7471b0521cb0488366a5d3397c8b67e29d079ff8b9e98e3 height=99 version=0x20000000 log2_work=7.6438562 tx=100 date='2019-07-13T20:50:50Z' progress=1.000000 cache=0.0MiB(99txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet f6f83fb6ef9a9d4f882f04e2b807659427c02109ed98e9034b0172792a8002b1  new
+2019-07-13T20:50:32Z UpdateTip: new best=202e1130818ea1451dc955da009de4eb518d34b15d2a487faf2c3b15f7f436cd height=100 version=0x20000000 log2_work=7.6582115 tx=101 date='2019-07-13T20:50:50Z' progress=1.000000 cache=0.0MiB(100txo)
+2019-07-13T20:50:32Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:50:32Z [default wallet] AddToWallet 1e7a4a47acb35e4d5c62704b6c749a9ebe607c8c3b5aa8c8f3dffddee76845ac  new
+2019-07-13T20:50:32Z UpdateTip: new best=14384052993caeba80349f16751d69269b1532a75b68effca6b2367576d7e6b7 height=101 version=0x20000000 log2_work=7.6724253 tx=102 date='2019-07-13T20:50:50Z' progress=1.000000 cache=0.0MiB(101txo)
+2019-07-13T20:50:32Z [default wallet] AddToWallet bc2bcb0f7693d404c5ef7e86982e3ea3ab580e0454283ddd8803c13c5514c9eb  new
+2019-07-13T20:51:22Z Adding fixed seed nodes as DNS doesn't seem to be available.
+2019-07-13T20:52:15Z tor: Thread interrupt
+2019-07-13T20:52:15Z Shutdown: In progress...
+2019-07-13T20:52:15Z addcon thread exit
+2019-07-13T20:52:15Z opencon thread exit
+2019-07-13T20:52:15Z torcontrol thread exit
+2019-07-13T20:52:15Z net thread exit
+2019-07-13T20:52:15Z msghand thread exit
+2019-07-13T20:52:15Z scheduler thread interrupt
+2019-07-13T20:52:15Z Dumped mempool: 1e-06s to copy, 0.022407s to dump
+2019-07-13T20:52:15Z [default wallet] Releasing wallet
+2019-07-13T20:52:15Z Shutdown: done
+2019-07-13T20:52:34Z 
+
+
+
+
+2019-07-13T20:52:34Z Bitcoin Core version v0.17.1 (release build)
+2019-07-13T20:52:34Z InitParameterInteraction: parameter interaction: -whitelistforcerelay=1 -> setting -whitelistrelay=1
+2019-07-13T20:52:34Z Validating signatures for all blocks.
+2019-07-13T20:52:34Z Setting nMinimumChainWork=0000000000000000000000000000000000000000000000000000000000000000
+2019-07-13T20:52:34Z Using the 'sse4(1way),sse41(4way),avx2(8way)' SHA256 implementation
+2019-07-13T20:52:34Z Using RdRand as an additional entropy source
+2019-07-13T20:52:34Z Default data directory /home/felipe/.bitcoin
+2019-07-13T20:52:34Z Using data directory /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest
+2019-07-13T20:52:34Z Using config file /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/bitcoin.conf
+2019-07-13T20:52:34Z Using at most 125 automatic connections (1024 file descriptors available)
+2019-07-13T20:52:34Z Warning: relative datadir option 'bitcoind' specified, which will be interpreted relative to the current working directory '/home/felipe/projetos/eclipse/LndPayRequest/test/integration/base'. This is fragile, because if bitcoin is started in the future from a different location, it will be unable to locate the current data files. There could also be data loss if bitcoin is started while in a temporary directory.
+2019-07-13T20:52:34Z Using 16 MiB out of 32/2 requested for signature cache, able to store 524288 elements
+2019-07-13T20:52:34Z Using 16 MiB out of 32/2 requested for script execution cache, able to store 524288 elements
+2019-07-13T20:52:34Z Using 4 threads for script verification
+2019-07-13T20:52:34Z Binding RPC on address 0.0.0.0 port 18443 failed.
+2019-07-13T20:52:34Z HTTP: creating work queue of depth 16
+2019-07-13T20:52:34Z Config options rpcuser and rpcpassword will soon be deprecated. Locally-run instances may remove rpcuser to use cookie-based auth, or may be replaced with rpcauth. Please see share/rpcauth for rpcauth auth generation.
+2019-07-13T20:52:34Z HTTP: starting 4 worker threads
+2019-07-13T20:52:34Z scheduler thread start
+2019-07-13T20:52:34Z Using wallet directory /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/wallets
+2019-07-13T20:52:34Z init message: Verifying wallet(s)...
+2019-07-13T20:52:34Z Using BerkeleyDB version Berkeley DB 4.8.30: (April  9, 2010)
+2019-07-13T20:52:34Z Using wallet wallet.dat
+2019-07-13T20:52:34Z BerkeleyEnvironment::Open: LogDir=/home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/wallets/database ErrorFile=/home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/wallets/db.log
+2019-07-13T20:52:34Z Cache configuration:
+2019-07-13T20:52:34Z * Using 2.0MiB for block index database
+2019-07-13T20:52:34Z * Using 56.0MiB for transaction index database
+2019-07-13T20:52:34Z * Using 8.0MiB for chain state database
+2019-07-13T20:52:34Z * Using 384.0MiB for in-memory UTXO set (plus up to 286.1MiB of unused mempool space)
+2019-07-13T20:52:34Z init message: Loading block index...
+2019-07-13T20:52:34Z Opening LevelDB in /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/blocks/index
+2019-07-13T20:52:34Z Opened LevelDB successfully
+2019-07-13T20:52:34Z Using obfuscation key for /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/blocks/index: 0000000000000000
+2019-07-13T20:52:34Z LoadBlockIndexDB: last block file = 0
+2019-07-13T20:52:34Z LoadBlockIndexDB: last block file info: CBlockFileInfo(blocks=102, size=27648, heights=0...101, time=2011-02-02...2019-07-13)
+2019-07-13T20:52:34Z Checking all blk files are present...
+2019-07-13T20:52:34Z Opening LevelDB in /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/chainstate
+2019-07-13T20:52:34Z Opened LevelDB successfully
+2019-07-13T20:52:34Z Using obfuscation key for /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/chainstate: 9ca766e6b63d2b8b
+2019-07-13T20:52:34Z Loaded best chain: hashBestChain=14384052993caeba80349f16751d69269b1532a75b68effca6b2367576d7e6b7 height=101 date=2019-07-13T20:50:50Z progress=1.000000
+2019-07-13T20:52:34Z init message: Rewinding blocks...
+2019-07-13T20:52:34Z init message: Verifying blocks...
+2019-07-13T20:52:34Z Verifying last 6 blocks at level 3
+2019-07-13T20:52:34Z [0%]...[16%]...[33%]...[50%]...[66%]...[83%]...[99%]...[DONE].
+2019-07-13T20:52:34Z No coin database inconsistencies in last 6 blocks (6 transactions)
+2019-07-13T20:52:34Z  block index             116ms
+2019-07-13T20:52:34Z Opening LevelDB in /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/indexes/txindex
+2019-07-13T20:52:34Z Opened LevelDB successfully
+2019-07-13T20:52:34Z Using obfuscation key for /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/indexes/txindex: 0000000000000000
+2019-07-13T20:52:34Z init message: Loading wallet...
+2019-07-13T20:52:34Z txindex thread start
+2019-07-13T20:52:34Z [default wallet] nFileVersion = 170100
+2019-07-13T20:52:34Z [default wallet] Keys: 2001 plaintext, 0 encrypted, 2001 w/ metadata, 2001 total. Unknown wallet records: 1
+2019-07-13T20:52:34Z [default wallet] Wallet completed loading in              64ms
+2019-07-13T20:52:34Z Syncing txindex with block chain from height 1
+2019-07-13T20:52:34Z [default wallet] keypool added 1 keys (0 internal), size=2000 (1000 internal)
+2019-07-13T20:52:34Z txindex is enabled at height 101
+2019-07-13T20:52:34Z txindex thread exit
+2019-07-13T20:52:34Z [default wallet] setKeyPool.size() = 2000
+2019-07-13T20:52:34Z [default wallet] mapWallet.size() = 101
+2019-07-13T20:52:34Z [default wallet] mapAddressBook.size() = 0
+2019-07-13T20:52:34Z mapBlockIndex.size() = 102
+2019-07-13T20:52:34Z nBestHeight = 101
+2019-07-13T20:52:34Z Imported mempool transactions from disk: 0 succeeded, 0 failed, 0 expired, 0 already there
+2019-07-13T20:52:34Z torcontrol thread start
+2019-07-13T20:52:34Z AddLocal([2804:14d:baa7:9674::1002]:18444,1)
+2019-07-13T20:52:34Z Discover: IPv6 eth0: 2804:14d:baa7:9674::1002
+2019-07-13T20:52:34Z AddLocal([2804:14d:baa7:9674:a9b7:1a30:d60f:600a]:18444,1)
+2019-07-13T20:52:34Z Discover: IPv6 eth0: 2804:14d:baa7:9674:a9b7:1a30:d60f:600a
+2019-07-13T20:52:34Z AddLocal([2804:14d:baa7:9674:a97e:1917:7ea7:dac0]:18444,1)
+2019-07-13T20:52:34Z Discover: IPv6 eth0: 2804:14d:baa7:9674:a97e:1917:7ea7:dac0
+2019-07-13T20:52:34Z Bound to [::]:18444
+2019-07-13T20:52:34Z Bound to 0.0.0.0:18444
+2019-07-13T20:52:34Z init message: Loading P2P addresses...
+2019-07-13T20:52:34Z Loaded 0 addresses from peers.dat  0ms
+2019-07-13T20:52:34Z init message: Loading banlist...
+2019-07-13T20:52:34Z init message: Starting network threads...
+2019-07-13T20:52:34Z dnsseed thread start
+2019-07-13T20:52:34Z init message: Done loading
+2019-07-13T20:52:34Z Loading addresses from DNS seeds (could take a while)
+2019-07-13T20:52:34Z 0 addresses found from DNS seeds
+2019-07-13T20:52:34Z dnsseed thread exit
+2019-07-13T20:52:34Z msghand thread start
+2019-07-13T20:52:34Z addcon thread start
+2019-07-13T20:52:34Z net thread start
+2019-07-13T20:52:34Z opencon thread start
+2019-07-13T20:52:43Z Leaving InitialBlockDownload (latching to false)
+2019-07-13T20:53:11Z tor: Thread interrupt
+2019-07-13T20:53:11Z Shutdown: In progress...
+2019-07-13T20:53:11Z torcontrol thread exit
+2019-07-13T20:53:11Z addcon thread exit
+2019-07-13T20:53:11Z opencon thread exit
+2019-07-13T20:53:11Z msghand thread exit
+2019-07-13T20:53:12Z net thread exit
+2019-07-13T20:53:12Z scheduler thread interrupt
+2019-07-13T20:53:12Z Dumped mempool: 1e-06s to copy, 0.008008s to dump
+2019-07-13T20:53:12Z [default wallet] Releasing wallet
+2019-07-13T20:53:12Z Shutdown: done
+2019-07-13T20:53:14Z 
+
+
+
+
+2019-07-13T20:53:14Z Bitcoin Core version v0.17.1 (release build)
+2019-07-13T20:53:14Z InitParameterInteraction: parameter interaction: -whitelistforcerelay=1 -> setting -whitelistrelay=1
+2019-07-13T20:53:14Z Validating signatures for all blocks.
+2019-07-13T20:53:14Z Setting nMinimumChainWork=0000000000000000000000000000000000000000000000000000000000000000
+2019-07-13T20:53:14Z Using the 'sse4(1way),sse41(4way),avx2(8way)' SHA256 implementation
+2019-07-13T20:53:14Z Using RdRand as an additional entropy source
+2019-07-13T20:53:14Z Default data directory /home/felipe/.bitcoin
+2019-07-13T20:53:14Z Using data directory /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest
+2019-07-13T20:53:14Z Using config file /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/bitcoin.conf
+2019-07-13T20:53:14Z Using at most 125 automatic connections (1024 file descriptors available)
+2019-07-13T20:53:14Z Warning: relative datadir option 'bitcoind' specified, which will be interpreted relative to the current working directory '/home/felipe/projetos/eclipse/LndPayRequest/test/integration/base'. This is fragile, because if bitcoin is started in the future from a different location, it will be unable to locate the current data files. There could also be data loss if bitcoin is started while in a temporary directory.
+2019-07-13T20:53:14Z Using 16 MiB out of 32/2 requested for signature cache, able to store 524288 elements
+2019-07-13T20:53:14Z Using 16 MiB out of 32/2 requested for script execution cache, able to store 524288 elements
+2019-07-13T20:53:14Z Using 4 threads for script verification
+2019-07-13T20:53:14Z Binding RPC on address 0.0.0.0 port 18443 failed.
+2019-07-13T20:53:14Z HTTP: creating work queue of depth 16
+2019-07-13T20:53:14Z Config options rpcuser and rpcpassword will soon be deprecated. Locally-run instances may remove rpcuser to use cookie-based auth, or may be replaced with rpcauth. Please see share/rpcauth for rpcauth auth generation.
+2019-07-13T20:53:14Z HTTP: starting 4 worker threads
+2019-07-13T20:53:14Z Using wallet directory /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/wallets
+2019-07-13T20:53:14Z init message: Verifying wallet(s)...
+2019-07-13T20:53:14Z Using BerkeleyDB version Berkeley DB 4.8.30: (April  9, 2010)
+2019-07-13T20:53:14Z Using wallet wallet.dat
+2019-07-13T20:53:14Z BerkeleyEnvironment::Open: LogDir=/home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/wallets/database ErrorFile=/home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/wallets/db.log
+2019-07-13T20:53:14Z scheduler thread start
+2019-07-13T20:53:14Z Cache configuration:
+2019-07-13T20:53:14Z * Using 2.0MiB for block index database
+2019-07-13T20:53:14Z * Using 56.0MiB for transaction index database
+2019-07-13T20:53:14Z * Using 8.0MiB for chain state database
+2019-07-13T20:53:14Z * Using 384.0MiB for in-memory UTXO set (plus up to 286.1MiB of unused mempool space)
+2019-07-13T20:53:14Z init message: Loading block index...
+2019-07-13T20:53:14Z Opening LevelDB in /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/blocks/index
+2019-07-13T20:53:14Z Opened LevelDB successfully
+2019-07-13T20:53:14Z Using obfuscation key for /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/blocks/index: 0000000000000000
+2019-07-13T20:53:14Z LoadBlockIndexDB: last block file = 0
+2019-07-13T20:53:14Z LoadBlockIndexDB: last block file info: CBlockFileInfo(blocks=102, size=27648, heights=0...101, time=2011-02-02...2019-07-13)
+2019-07-13T20:53:14Z Checking all blk files are present...
+2019-07-13T20:53:14Z Opening LevelDB in /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/chainstate
+2019-07-13T20:53:14Z Opened LevelDB successfully
+2019-07-13T20:53:14Z Using obfuscation key for /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/chainstate: 9ca766e6b63d2b8b
+2019-07-13T20:53:14Z Loaded best chain: hashBestChain=14384052993caeba80349f16751d69269b1532a75b68effca6b2367576d7e6b7 height=101 date=2019-07-13T20:50:50Z progress=1.000000
+2019-07-13T20:53:14Z init message: Rewinding blocks...
+2019-07-13T20:53:14Z init message: Verifying blocks...
+2019-07-13T20:53:14Z Verifying last 6 blocks at level 3
+2019-07-13T20:53:14Z [0%]...[16%]...[33%]...[50%]...[66%]...[83%]...[99%]...[DONE].
+2019-07-13T20:53:14Z No coin database inconsistencies in last 6 blocks (6 transactions)
+2019-07-13T20:53:14Z  block index             159ms
+2019-07-13T20:53:14Z Opening LevelDB in /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/indexes/txindex
+2019-07-13T20:53:14Z Opened LevelDB successfully
+2019-07-13T20:53:14Z Using obfuscation key for /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/indexes/txindex: 0000000000000000
+2019-07-13T20:53:14Z init message: Loading wallet...
+2019-07-13T20:53:14Z txindex thread start
+2019-07-13T20:53:14Z txindex is enabled at height 101
+2019-07-13T20:53:14Z txindex thread exit
+2019-07-13T20:53:14Z [default wallet] nFileVersion = 170100
+2019-07-13T20:53:14Z [default wallet] Keys: 2002 plaintext, 0 encrypted, 2002 w/ metadata, 2002 total. Unknown wallet records: 1
+2019-07-13T20:53:14Z [default wallet] Wallet completed loading in              73ms
+2019-07-13T20:53:14Z [default wallet] setKeyPool.size() = 2000
+2019-07-13T20:53:14Z [default wallet] mapWallet.size() = 101
+2019-07-13T20:53:14Z [default wallet] mapAddressBook.size() = 0
+2019-07-13T20:53:14Z mapBlockIndex.size() = 102
+2019-07-13T20:53:14Z nBestHeight = 101
+2019-07-13T20:53:14Z Imported mempool transactions from disk: 0 succeeded, 0 failed, 0 expired, 0 already there
+2019-07-13T20:53:14Z torcontrol thread start
+2019-07-13T20:53:14Z AddLocal([2804:14d:baa7:9674::1002]:18444,1)
+2019-07-13T20:53:14Z Discover: IPv6 eth0: 2804:14d:baa7:9674::1002
+2019-07-13T20:53:14Z AddLocal([2804:14d:baa7:9674:a9b7:1a30:d60f:600a]:18444,1)
+2019-07-13T20:53:14Z Discover: IPv6 eth0: 2804:14d:baa7:9674:a9b7:1a30:d60f:600a
+2019-07-13T20:53:14Z AddLocal([2804:14d:baa7:9674:a97e:1917:7ea7:dac0]:18444,1)
+2019-07-13T20:53:14Z Discover: IPv6 eth0: 2804:14d:baa7:9674:a97e:1917:7ea7:dac0
+2019-07-13T20:53:14Z Bound to [::]:18444
+2019-07-13T20:53:14Z Bound to 0.0.0.0:18444
+2019-07-13T20:53:14Z init message: Loading P2P addresses...
+2019-07-13T20:53:14Z Loaded 0 addresses from peers.dat  0ms
+2019-07-13T20:53:14Z init message: Loading banlist...
+2019-07-13T20:53:14Z init message: Starting network threads...
+2019-07-13T20:53:14Z dnsseed thread start
+2019-07-13T20:53:14Z init message: Done loading
+2019-07-13T20:53:14Z Loading addresses from DNS seeds (could take a while)
+2019-07-13T20:53:14Z addcon thread start
+2019-07-13T20:53:14Z 0 addresses found from DNS seeds
+2019-07-13T20:53:14Z dnsseed thread exit
+2019-07-13T20:53:14Z opencon thread start
+2019-07-13T20:53:14Z msghand thread start
+2019-07-13T20:53:14Z net thread start
+2019-07-13T20:54:15Z Adding fixed seed nodes as DNS doesn't seem to be available.
+2019-07-13T20:54:22Z tor: Thread interrupt
+2019-07-13T20:54:22Z Shutdown: In progress...
+2019-07-13T20:54:22Z torcontrol thread exit
+2019-07-13T20:54:22Z opencon thread exit
+2019-07-13T20:54:22Z addcon thread exit
+2019-07-13T20:54:22Z net thread exit
+2019-07-13T20:54:22Z msghand thread exit
+2019-07-13T20:54:22Z scheduler thread interrupt
+2019-07-13T20:54:22Z Dumped mempool: 5e-06s to copy, 0.010703s to dump
+2019-07-13T20:54:22Z [default wallet] Releasing wallet
+2019-07-13T20:54:22Z Shutdown: done
+2019-07-13T20:54:37Z 
+
+
+
+
+2019-07-13T20:54:37Z Bitcoin Core version v0.17.1 (release build)
+2019-07-13T20:54:37Z InitParameterInteraction: parameter interaction: -whitelistforcerelay=1 -> setting -whitelistrelay=1
+2019-07-13T20:54:37Z Validating signatures for all blocks.
+2019-07-13T20:54:37Z Setting nMinimumChainWork=0000000000000000000000000000000000000000000000000000000000000000
+2019-07-13T20:54:37Z Using the 'sse4(1way),sse41(4way),avx2(8way)' SHA256 implementation
+2019-07-13T20:54:37Z Using RdRand as an additional entropy source
+2019-07-13T20:54:37Z Default data directory /home/felipe/.bitcoin
+2019-07-13T20:54:37Z Using data directory /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest
+2019-07-13T20:54:37Z Using config file /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/bitcoin.conf
+2019-07-13T20:54:37Z Using at most 125 automatic connections (1024 file descriptors available)
+2019-07-13T20:54:37Z Warning: relative datadir option 'bitcoind' specified, which will be interpreted relative to the current working directory '/home/felipe/projetos/eclipse/LndPayRequest/test/integration/base'. This is fragile, because if bitcoin is started in the future from a different location, it will be unable to locate the current data files. There could also be data loss if bitcoin is started while in a temporary directory.
+2019-07-13T20:54:37Z Using 16 MiB out of 32/2 requested for signature cache, able to store 524288 elements
+2019-07-13T20:54:37Z Using 16 MiB out of 32/2 requested for script execution cache, able to store 524288 elements
+2019-07-13T20:54:37Z Using 4 threads for script verification
+2019-07-13T20:54:37Z scheduler thread start
+2019-07-13T20:54:37Z Binding RPC on address 0.0.0.0 port 18443 failed.
+2019-07-13T20:54:37Z HTTP: creating work queue of depth 16
+2019-07-13T20:54:37Z Config options rpcuser and rpcpassword will soon be deprecated. Locally-run instances may remove rpcuser to use cookie-based auth, or may be replaced with rpcauth. Please see share/rpcauth for rpcauth auth generation.
+2019-07-13T20:54:37Z HTTP: starting 4 worker threads
+2019-07-13T20:54:37Z Using wallet directory /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/wallets
+2019-07-13T20:54:37Z init message: Verifying wallet(s)...
+2019-07-13T20:54:37Z Using BerkeleyDB version Berkeley DB 4.8.30: (April  9, 2010)
+2019-07-13T20:54:37Z Using wallet wallet.dat
+2019-07-13T20:54:37Z BerkeleyEnvironment::Open: LogDir=/home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/wallets/database ErrorFile=/home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/wallets/db.log
+2019-07-13T20:54:37Z Cache configuration:
+2019-07-13T20:54:37Z * Using 2.0MiB for block index database
+2019-07-13T20:54:37Z * Using 56.0MiB for transaction index database
+2019-07-13T20:54:37Z * Using 8.0MiB for chain state database
+2019-07-13T20:54:37Z * Using 384.0MiB for in-memory UTXO set (plus up to 286.1MiB of unused mempool space)
+2019-07-13T20:54:37Z init message: Loading block index...
+2019-07-13T20:54:37Z Opening LevelDB in /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/blocks/index
+2019-07-13T20:54:37Z Opened LevelDB successfully
+2019-07-13T20:54:37Z Using obfuscation key for /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/blocks/index: 0000000000000000
+2019-07-13T20:54:37Z LoadBlockIndexDB: last block file = 0
+2019-07-13T20:54:37Z LoadBlockIndexDB: last block file info: CBlockFileInfo(blocks=102, size=27648, heights=0...101, time=2011-02-02...2019-07-13)
+2019-07-13T20:54:37Z Checking all blk files are present...
+2019-07-13T20:54:37Z Opening LevelDB in /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/chainstate
+2019-07-13T20:54:37Z Opened LevelDB successfully
+2019-07-13T20:54:37Z Using obfuscation key for /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/chainstate: 9ca766e6b63d2b8b
+2019-07-13T20:54:37Z Loaded best chain: hashBestChain=14384052993caeba80349f16751d69269b1532a75b68effca6b2367576d7e6b7 height=101 date=2019-07-13T20:50:50Z progress=1.000000
+2019-07-13T20:54:37Z init message: Rewinding blocks...
+2019-07-13T20:54:37Z init message: Verifying blocks...
+2019-07-13T20:54:37Z Verifying last 6 blocks at level 3
+2019-07-13T20:54:37Z [0%]...[16%]...[33%]...[50%]...[66%]...[83%]...[99%]...[DONE].
+2019-07-13T20:54:37Z No coin database inconsistencies in last 6 blocks (6 transactions)
+2019-07-13T20:54:37Z  block index             109ms
+2019-07-13T20:54:37Z Opening LevelDB in /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/indexes/txindex
+2019-07-13T20:54:37Z Opened LevelDB successfully
+2019-07-13T20:54:37Z Using obfuscation key for /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/indexes/txindex: 0000000000000000
+2019-07-13T20:54:37Z init message: Loading wallet...
+2019-07-13T20:54:37Z txindex thread start
+2019-07-13T20:54:37Z txindex is enabled at height 101
+2019-07-13T20:54:37Z txindex thread exit
+2019-07-13T20:54:37Z [default wallet] nFileVersion = 170100
+2019-07-13T20:54:37Z [default wallet] Keys: 2002 plaintext, 0 encrypted, 2002 w/ metadata, 2002 total. Unknown wallet records: 1
+2019-07-13T20:54:38Z [default wallet] Wallet completed loading in              66ms
+2019-07-13T20:54:38Z [default wallet] setKeyPool.size() = 2000
+2019-07-13T20:54:38Z [default wallet] mapWallet.size() = 101
+2019-07-13T20:54:38Z [default wallet] mapAddressBook.size() = 0
+2019-07-13T20:54:38Z mapBlockIndex.size() = 102
+2019-07-13T20:54:38Z nBestHeight = 101
+2019-07-13T20:54:38Z Imported mempool transactions from disk: 0 succeeded, 0 failed, 0 expired, 0 already there
+2019-07-13T20:54:38Z torcontrol thread start
+2019-07-13T20:54:38Z AddLocal([2804:14d:baa7:9674::1002]:18444,1)
+2019-07-13T20:54:38Z Discover: IPv6 eth0: 2804:14d:baa7:9674::1002
+2019-07-13T20:54:38Z AddLocal([2804:14d:baa7:9674:a9b7:1a30:d60f:600a]:18444,1)
+2019-07-13T20:54:38Z Discover: IPv6 eth0: 2804:14d:baa7:9674:a9b7:1a30:d60f:600a
+2019-07-13T20:54:38Z AddLocal([2804:14d:baa7:9674:a97e:1917:7ea7:dac0]:18444,1)
+2019-07-13T20:54:38Z Discover: IPv6 eth0: 2804:14d:baa7:9674:a97e:1917:7ea7:dac0
+2019-07-13T20:54:38Z Bound to [::]:18444
+2019-07-13T20:54:38Z Bound to 0.0.0.0:18444
+2019-07-13T20:54:38Z init message: Loading P2P addresses...
+2019-07-13T20:54:38Z Loaded 0 addresses from peers.dat  0ms
+2019-07-13T20:54:38Z init message: Loading banlist...
+2019-07-13T20:54:38Z init message: Starting network threads...
+2019-07-13T20:54:38Z net thread start
+2019-07-13T20:54:38Z addcon thread start
+2019-07-13T20:54:38Z init message: Done loading
+2019-07-13T20:54:38Z opencon thread start
+2019-07-13T20:54:38Z msghand thread start
+2019-07-13T20:54:38Z dnsseed thread start
+2019-07-13T20:54:38Z Loading addresses from DNS seeds (could take a while)
+2019-07-13T20:54:38Z 0 addresses found from DNS seeds
+2019-07-13T20:54:38Z dnsseed thread exit
+2019-07-13T20:54:40Z Leaving InitialBlockDownload (latching to false)
+2019-07-13T20:55:14Z [default wallet] keypool reserve 1001
+2019-07-13T20:55:14Z [default wallet] Fee Calculation: Fee:3700 Bytes:185 Needed:3700 Tgt:0 (requested 6) Reason:"Fallback fee" Decay 0.00000: Estimation: (-1 - -1) -nan% 0.0/(0.0 0 mem 0.0 out) Fail: (-1 - -1) -nan% 0.0/(0.0 0 mem 0.0 out)
+2019-07-13T20:55:14Z [default wallet] CommitTransaction:
+CTransaction(hash=967410f6f6, ver=2, vin.size=1, vout.size=2, nLockTime=101)
+    CTxIn(COutPoint(68d061ea6e, 0), scriptSig=47304402200f0c9df2eadd50, nSequence=4294967294)
+    CScriptWitness()
+    CTxOut(nValue=1.00000000, scriptPubKey=00149a2ef072dd3f5e4def3369a932)
+    CTxOut(nValue=48.99996300, scriptPubKey=0014fc3b80bc93dd75a2269622336b)
+2019-07-13T20:55:14Z [default wallet] keypool keep 1001
+2019-07-13T20:55:14Z [default wallet] AddToWallet 967410f6f683dc5ba70cd4b532dc7538fd1ae2f1a9e28868c247242fbc6bcc71  new
+2019-07-13T20:55:14Z [default wallet] Relaying wtx 967410f6f683dc5ba70cd4b532dc7538fd1ae2f1a9e28868c247242fbc6bcc71
+2019-07-13T20:55:14Z [default wallet] AddToWallet 967410f6f683dc5ba70cd4b532dc7538fd1ae2f1a9e28868c247242fbc6bcc71  
+2019-07-13T20:55:26Z [default wallet] keypool added 1 keys (1 internal), size=2000 (1000 internal)
+2019-07-13T20:55:26Z [default wallet] keypool reserve 2
+2019-07-13T20:55:26Z CreateNewBlock(): block weight: 1680 txs: 1 fees: 3700 sigops 400
+2019-07-13T20:55:26Z UpdateTip: new best=5c8d35b889535e1dc3b298463de6402a3bda21ee31cf07112a4eefbbaf34f676 height=102 version=0x20000000 log2_work=7.6865005 tx=104 date='2019-07-13T20:55:26Z' progress=1.000000 cache=0.0MiB(4txo)
+2019-07-13T20:55:26Z [default wallet] keypool keep 2
+2019-07-13T20:55:26Z [default wallet] AddToWallet 8d8e9a5b51413a37f07e5eb4bee13aa1a01facb7468de3457f1f41f1ee47eb2e  new
+2019-07-13T20:55:26Z [default wallet] AddToWallet 967410f6f683dc5ba70cd4b532dc7538fd1ae2f1a9e28868c247242fbc6bcc71  update
+2019-07-13T20:55:26Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:55:26Z UpdateTip: new best=20d1b0a4d89fb35aad772ef8c5cd04c163a290651b411a3c373a178def51cec5 height=103 version=0x20000000 log2_work=7.7004397 tx=105 date='2019-07-13T20:55:26Z' progress=1.000000 cache=0.0MiB(5txo)
+2019-07-13T20:55:26Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:55:26Z [default wallet] AddToWallet 2305d1cc61a5e14dd148a9e96fe3945e2cd8a617ff4af486772f1a35f9deb013  new
+2019-07-13T20:55:26Z UpdateTip: new best=1a3c86b18a7bf35265f99124dd453e24dfd29692ce01dc111910fcebba82f9f2 height=104 version=0x20000000 log2_work=7.7142455 tx=106 date='2019-07-13T20:55:26Z' progress=1.000000 cache=0.0MiB(6txo)
+2019-07-13T20:55:26Z [default wallet] AddToWallet 03cfdb3feb114d1b4c31665b0b7462bb9d2149c7df48b68f949d09cbdbdfdecf  new
+2019-07-13T20:55:26Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:55:26Z UpdateTip: new best=5fa135cff6bceda718c8bde15a9b8fba39dfac5affddf3cf6405154dda09cf0e height=105 version=0x20000000 log2_work=7.7279205 tx=107 date='2019-07-13T20:55:26Z' progress=1.000000 cache=0.0MiB(7txo)
+2019-07-13T20:55:26Z [default wallet] AddToWallet c0793c9fbb8045d3d06b4c651a1e2dfe04a508deae5b7a867d7ace3fdff09879  new
+2019-07-13T20:55:26Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:55:26Z UpdateTip: new best=380d3b74a68a775dae37a4e5ec70f3bbcc292402d4b96c819f1edf44ada7a5fe height=106 version=0x20000000 log2_work=7.741467 tx=108 date='2019-07-13T20:55:26Z' progress=1.000000 cache=0.0MiB(8txo)
+2019-07-13T20:55:26Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:55:26Z [default wallet] AddToWallet 19e46bd8e6ca3eba4f3a59b97c5660aa3b04284cbfd3436e87aa345546bd01d3  new
+2019-07-13T20:55:26Z UpdateTip: new best=7e0817c11603bd05e4ee2702c3dd6376f01f7910a6e7519bcb6434a5e44acbd0 height=107 version=0x20000000 log2_work=7.7548875 tx=109 date='2019-07-13T20:55:26Z' progress=1.000000 cache=0.0MiB(9txo)
+2019-07-13T20:55:26Z [default wallet] AddToWallet 8d3d58751a20b02413f404e48709b2ee7a849862df8597f9fd4694c8ea15cb12  new
+2019-07-13T20:55:39Z Adding fixed seed nodes as DNS doesn't seem to be available.
+2019-07-13T20:58:27Z [default wallet] keypool added 1 keys (0 internal), size=2000 (1000 internal)
+2019-07-13T20:58:27Z [default wallet] keypool reserve 3
+2019-07-13T20:58:27Z CreateNewBlock(): block weight: 1550 txs: 1 fees: 7637 sigops 401
+2019-07-13T20:58:27Z UpdateTip: new best=7939fd3315033daa665bdc801e3f7a00f962b515fa6f26e111e38f2a454fbbbc height=108 version=0x20000000 log2_work=7.7681843 tx=111 date='2019-07-13T20:58:27Z' progress=1.000000 cache=0.0MiB(11txo)
+2019-07-13T20:58:27Z [default wallet] keypool keep 3
+2019-07-13T20:58:27Z [default wallet] AddToWallet f096909bc0bf24fe242107f7a3ad6f409656d7d6e66da990ee1ac8572bb05a1b  new
+2019-07-13T20:58:27Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:58:27Z UpdateTip: new best=59a9c3ef9ee5f82a9442a67516d507a87219352cccf814a1cc4a3c289199f552 height=109 version=0x20000000 log2_work=7.7813597 tx=112 date='2019-07-13T20:58:27Z' progress=1.000000 cache=0.0MiB(12txo)
+2019-07-13T20:58:27Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:58:27Z [default wallet] AddToWallet 1a7896c8ed3252cc93e7ff99b2bae8dc32f0f2d2d196c208079792e301210901  new
+2019-07-13T20:58:27Z UpdateTip: new best=74aaaba029ae971a269affdbe8c34a1879a8ad53427afc1e0aa533aca27d2313 height=110 version=0x20000000 log2_work=7.7944159 tx=113 date='2019-07-13T20:58:27Z' progress=1.000000 cache=0.0MiB(13txo)
+2019-07-13T20:58:27Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:58:27Z UpdateTip: new best=0dff912437ef1a27743ec08d3c6ebf94bfa87448a009beb8b16ec1edacb2df79 height=111 version=0x20000000 log2_work=7.8073549 tx=114 date='2019-07-13T20:58:27Z' progress=1.000000 cache=0.0MiB(14txo)
+2019-07-13T20:58:27Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:58:27Z [default wallet] AddToWallet 493718e3c8f5212661a28721955e2323d667e5c8e6c37bf9e16bc03d473d7a43  new
+2019-07-13T20:58:27Z UpdateTip: new best=2cabf2013a72861e90174ae369d1e93396f534d7978086a880faf670ca3f8118 height=112 version=0x20000000 log2_work=7.820179 tx=115 date='2019-07-13T20:58:27Z' progress=1.000000 cache=0.0MiB(15txo)
+2019-07-13T20:58:27Z CreateNewBlock(): block weight: 940 txs: 0 fees: 0 sigops 400
+2019-07-13T20:58:27Z [default wallet] AddToWallet 8065bff7be93ecb96df0a825367cca8b1b40e642c3c88f09435c44cf6ec091c3  new
+2019-07-13T20:58:27Z UpdateTip: new best=5ce62fdd78442d121aba04120c463ead2850917d4ccd8d0348bfcfc4d1c3bf77 height=113 version=0x20000000 log2_work=7.83289 tx=116 date='2019-07-13T20:58:27Z' progress=1.000000 cache=0.0MiB(16txo)
+2019-07-13T20:58:27Z [default wallet] AddToWallet c9bc323285e78b9a30a22ac65a0fc3737490001bc0160181647a1a398100b41a  new
+2019-07-13T20:58:27Z [default wallet] AddToWallet edf9a75a14891f91fb2d9c55f4ead4b5db5edd43f86e968d1b516d6554bfd4a3  new
+2019-07-13T20:58:55Z tor: Thread interrupt
+2019-07-13T20:58:55Z Shutdown: In progress...
+2019-07-13T20:58:55Z addcon thread exit
+2019-07-13T20:58:55Z opencon thread exit
+2019-07-13T20:58:55Z torcontrol thread exit
+2019-07-13T20:58:55Z net thread exit
+2019-07-13T20:58:55Z msghand thread exit
+2019-07-13T20:58:55Z scheduler thread interrupt
+2019-07-13T20:58:55Z Dumped mempool: 4e-06s to copy, 0.008624s to dump
+2019-07-13T20:58:55Z [default wallet] Releasing wallet
+2019-07-13T20:58:55Z Shutdown: done
+2019-07-13T20:59:00Z 
+
+
+
+
+2019-07-13T20:59:00Z Bitcoin Core version v0.17.1 (release build)
+2019-07-13T20:59:00Z InitParameterInteraction: parameter interaction: -whitelistforcerelay=1 -> setting -whitelistrelay=1
+2019-07-13T20:59:00Z Validating signatures for all blocks.
+2019-07-13T20:59:00Z Setting nMinimumChainWork=0000000000000000000000000000000000000000000000000000000000000000
+2019-07-13T20:59:00Z Using the 'sse4(1way),sse41(4way),avx2(8way)' SHA256 implementation
+2019-07-13T20:59:00Z Using RdRand as an additional entropy source
+2019-07-13T20:59:01Z Default data directory /home/felipe/.bitcoin
+2019-07-13T20:59:01Z Using data directory /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest
+2019-07-13T20:59:01Z Using config file /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/bitcoin.conf
+2019-07-13T20:59:01Z Using at most 125 automatic connections (1024 file descriptors available)
+2019-07-13T20:59:01Z Warning: relative datadir option 'bitcoind' specified, which will be interpreted relative to the current working directory '/home/felipe/projetos/eclipse/LndPayRequest/test/integration/base'. This is fragile, because if bitcoin is started in the future from a different location, it will be unable to locate the current data files. There could also be data loss if bitcoin is started while in a temporary directory.
+2019-07-13T20:59:01Z Using 16 MiB out of 32/2 requested for signature cache, able to store 524288 elements
+2019-07-13T20:59:01Z Using 16 MiB out of 32/2 requested for script execution cache, able to store 524288 elements
+2019-07-13T20:59:01Z Using 4 threads for script verification
+2019-07-13T20:59:01Z scheduler thread start
+2019-07-13T20:59:01Z Binding RPC on address 0.0.0.0 port 18443 failed.
+2019-07-13T20:59:01Z HTTP: creating work queue of depth 16
+2019-07-13T20:59:01Z Config options rpcuser and rpcpassword will soon be deprecated. Locally-run instances may remove rpcuser to use cookie-based auth, or may be replaced with rpcauth. Please see share/rpcauth for rpcauth auth generation.
+2019-07-13T20:59:01Z HTTP: starting 4 worker threads
+2019-07-13T20:59:01Z Using wallet directory /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/wallets
+2019-07-13T20:59:01Z init message: Verifying wallet(s)...
+2019-07-13T20:59:01Z Using BerkeleyDB version Berkeley DB 4.8.30: (April  9, 2010)
+2019-07-13T20:59:01Z Using wallet wallet.dat
+2019-07-13T20:59:01Z BerkeleyEnvironment::Open: LogDir=/home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/wallets/database ErrorFile=/home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/wallets/db.log
+2019-07-13T20:59:01Z Cache configuration:
+2019-07-13T20:59:01Z * Using 2.0MiB for block index database
+2019-07-13T20:59:01Z * Using 56.0MiB for transaction index database
+2019-07-13T20:59:01Z * Using 8.0MiB for chain state database
+2019-07-13T20:59:01Z * Using 384.0MiB for in-memory UTXO set (plus up to 286.1MiB of unused mempool space)
+2019-07-13T20:59:01Z init message: Loading block index...
+2019-07-13T20:59:01Z Opening LevelDB in /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/blocks/index
+2019-07-13T20:59:01Z Opened LevelDB successfully
+2019-07-13T20:59:01Z Using obfuscation key for /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/blocks/index: 0000000000000000
+2019-07-13T20:59:01Z LoadBlockIndexDB: last block file = 0
+2019-07-13T20:59:01Z LoadBlockIndexDB: last block file info: CBlockFileInfo(blocks=114, size=31320, heights=0...113, time=2011-02-02...2019-07-13)
+2019-07-13T20:59:01Z Checking all blk files are present...
+2019-07-13T20:59:01Z Opening LevelDB in /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/chainstate
+2019-07-13T20:59:01Z Opened LevelDB successfully
+2019-07-13T20:59:01Z Using obfuscation key for /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/chainstate: 9ca766e6b63d2b8b
+2019-07-13T20:59:01Z Loaded best chain: hashBestChain=5ce62fdd78442d121aba04120c463ead2850917d4ccd8d0348bfcfc4d1c3bf77 height=113 date=2019-07-13T20:58:27Z progress=1.000000
+2019-07-13T20:59:01Z init message: Rewinding blocks...
+2019-07-13T20:59:01Z init message: Verifying blocks...
+2019-07-13T20:59:01Z Verifying last 6 blocks at level 3
+2019-07-13T20:59:01Z [0%]...[16%]...[33%]...[50%]...[66%]...[83%]...[99%]...[DONE].
+2019-07-13T20:59:01Z No coin database inconsistencies in last 6 blocks (7 transactions)
+2019-07-13T20:59:01Z  block index             167ms
+2019-07-13T20:59:01Z Opening LevelDB in /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/indexes/txindex
+2019-07-13T20:59:01Z Opened LevelDB successfully
+2019-07-13T20:59:01Z Using obfuscation key for /home/felipe/projetos/eclipse/LndPayRequest/test/integration/base/bitcoind/regtest/indexes/txindex: 0000000000000000
+2019-07-13T20:59:01Z init message: Loading wallet...
+2019-07-13T20:59:01Z txindex thread start
+2019-07-13T20:59:01Z [default wallet] nFileVersion = 170100
+2019-07-13T20:59:01Z [default wallet] Keys: 2004 plaintext, 0 encrypted, 2004 w/ metadata, 2004 total. Unknown wallet records: 1
+2019-07-13T20:59:01Z [default wallet] Wallet completed loading in              88ms
+2019-07-13T20:59:01Z Syncing txindex with block chain from height 102
+2019-07-13T20:59:01Z txindex is enabled at height 113
+2019-07-13T20:59:01Z txindex thread exit
+2019-07-13T20:59:01Z [default wallet] keypool added 1 keys (0 internal), size=2000 (1000 internal)
+2019-07-13T20:59:01Z [default wallet] setKeyPool.size() = 2000
+2019-07-13T20:59:01Z [default wallet] mapWallet.size() = 114
+2019-07-13T20:59:01Z [default wallet] mapAddressBook.size() = 0
+2019-07-13T20:59:01Z mapBlockIndex.size() = 114
+2019-07-13T20:59:01Z nBestHeight = 113
+2019-07-13T20:59:01Z Imported mempool transactions from disk: 0 succeeded, 0 failed, 0 expired, 0 already there
+2019-07-13T20:59:01Z torcontrol thread start
+2019-07-13T20:59:01Z AddLocal([2804:14d:baa7:9674::1002]:18444,1)
+2019-07-13T20:59:01Z Discover: IPv6 eth0: 2804:14d:baa7:9674::1002
+2019-07-13T20:59:01Z AddLocal([2804:14d:baa7:9674:a9b7:1a30:d60f:600a]:18444,1)
+2019-07-13T20:59:01Z Discover: IPv6 eth0: 2804:14d:baa7:9674:a9b7:1a30:d60f:600a
+2019-07-13T20:59:01Z AddLocal([2804:14d:baa7:9674:a97e:1917:7ea7:dac0]:18444,1)
+2019-07-13T20:59:01Z Discover: IPv6 eth0: 2804:14d:baa7:9674:a97e:1917:7ea7:dac0
+2019-07-13T20:59:01Z Bound to [::]:18444
+2019-07-13T20:59:01Z Bound to 0.0.0.0:18444
+2019-07-13T20:59:01Z init message: Loading P2P addresses...
+2019-07-13T20:59:01Z Loaded 0 addresses from peers.dat  1ms
+2019-07-13T20:59:01Z init message: Loading banlist...
+2019-07-13T20:59:01Z init message: Starting network threads...
+2019-07-13T20:59:01Z dnsseed thread start
+2019-07-13T20:59:01Z init message: Done loading
+2019-07-13T20:59:01Z Loading addresses from DNS seeds (could take a while)
+2019-07-13T20:59:01Z 0 addresses found from DNS seeds
+2019-07-13T20:59:01Z dnsseed thread exit
+2019-07-13T20:59:01Z msghand thread start
+2019-07-13T20:59:01Z opencon thread start
+2019-07-13T20:59:01Z addcon thread start
+2019-07-13T20:59:01Z net thread start
+2019-07-13T20:59:03Z Leaving InitialBlockDownload (latching to false)
+2019-07-13T21:00:02Z Adding fixed seed nodes as DNS doesn't seem to be available.
+2019-07-13T21:00:08Z tor: Thread interrupt
+2019-07-13T21:00:08Z Shutdown: In progress...
+2019-07-13T21:00:08Z opencon thread exit
+2019-07-13T21:00:08Z addcon thread exit
+2019-07-13T21:00:08Z torcontrol thread exit
+2019-07-13T21:00:08Z net thread exit
+2019-07-13T21:00:08Z msghand thread exit
+2019-07-13T21:00:08Z scheduler thread interrupt
+2019-07-13T21:00:08Z Dumped mempool: 2e-06s to copy, 0.009159s to dump
+2019-07-13T21:00:08Z [default wallet] Releasing wallet
+2019-07-13T21:00:08Z Shutdown: done

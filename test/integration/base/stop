@@ -1,0 +1,5 @@
+#!/bin/bash
+
+./run-lncli-client stop
+./run-lncli-server stop
+./run-bitcoin-cli stop
