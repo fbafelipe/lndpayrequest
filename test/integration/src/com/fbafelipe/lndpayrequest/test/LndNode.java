@@ -2,8 +2,7 @@ package com.fbafelipe.lndpayrequest.test;
 
 import java.io.File;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import org.json.JSONObject;
 
 public class LndNode {
 	private File mWorkingDir;
@@ -36,7 +35,7 @@ public class LndNode {
 	private JSONObject runCommand(String ... args) {
 		try {
 			String result = CommandUtils.runCommand(mWorkingDir, mScriptFile, args);
-			return (JSONObject) new JSONParser().parse(result);
+			return (JSONObject) new JSONObject(result);
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e.getMessage(), e);
