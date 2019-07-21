@@ -1,0 +1,8 @@
+jdbc.driver=DRIVER
+jdbc.url=HOST/DATABASE
+jdbc.username=USERNAME
+jdbc.password=PASSWORD
+lnd.resthost=HOST
+lnd.restport=PORT
+lnd.macaroon=MACAROON_DATA
+lnd.httpscert=HTTPS_CERT_DATA

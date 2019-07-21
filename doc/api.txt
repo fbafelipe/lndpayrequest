@@ -1,0 +1,51 @@
+POST ENDPOINT/LndPayRequest/v1/paymentrequests
+
+Request:
+apikey - String, Identifier of the user account
+amount - Long, Amount to be charged, the unit of this amount is set in the currency param
+currency - String, The currency used for the payment, can be sat, USD or BRL
+
+Response:
+paymentId - String, an identifier for this payment, used on paymentstatus request
+paymentRequest - String, the lightning payment request, use this to show the QR Code
+
+
+Example:
+Request: POST ENDPOINT/LndPayRequest/v1/paymentrequests
+{
+	"apikey": "testapikey",
+	"amount": 100,
+	"currency": "sat"
+}
+
+Response: 200 OK
+{
+	"paymentId": "aaa-111-bbb-222",
+	"paymentRequest": "lntb15u1pwnfuq8pp5tffrrjjmfrzq59v3mkpjeudpkyc484t9m02c09nq845wt20alazsdq4xysyymr0vd4kzcmrd9hx7cqp553gt7u8kle4tctqw3u3zrmepxmggefnjcs78vlk8vgyugkl5cda4dxvmtuht4wpsqyptx8rkx46hmr6c4079hv7k8hq0kd5z0wa0rhgqcj6ddq"
+}
+			
+			
+-----------------------------------------------------------
+
+GET ENDPOINT/LndPayRequest/v1/paymentstatus/PAYMENT_ID
+
+Request:
+PAYMENT_ID - The paymentId returned on paymentrequests
+
+Response:
+paid - Boolean, true if the paymentId has been paid, false otherwise
+
+Example:
+Request: POST ENDPOINT/LndPayRequest/v1/paymentstatus/aaa-111-bbb-222
+
+Response: 200 OK
+{
+	"paid": true
+}
+
+-----------------------------------------------------------
+
+Errors are reported on HTTP status:
+400 BAD REQUEST - If there are missing params, the param values are invalid, the params are not a valid JSON or if for any other reason the server does not understand the request.
+
+500 INTERNAL SERVER ERROR - If the server fail to access the database, fail to access the LND Node or any unexpected error.

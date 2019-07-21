@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
 
+import com.fbafelipe.lndpayrequest.di.ModuleFactory;
 import com.fbafelipe.lndpayrequest.domain.CheckPaymentUseCase;
+import com.fbafelipe.lndpayrequest.exception.ServerException;
 import com.fbafelipe.lndpayrequest.util.Utils;
 
 @WebServlet("/v1/paymentstatus/*")
@@ -25,24 +27,33 @@ public class PaymentStatusServlet extends HttpServlet {
 	private CheckPaymentUseCase mCheckPayment;
 	
 	public PaymentStatusServlet() {
-		mCheckPayment = new CheckPaymentUseCase();
+    	this(ModuleFactory.getInstance());
+    }
+	
+	public PaymentStatusServlet(ModuleFactory factory) {
+		mCheckPayment = factory.getCheckPayment();
 	}
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Matcher matcher = PAYMENT_ID_REGEX.matcher(request.getPathInfo());
-		if (matcher.matches()) {
-			Utils.prepareResponse(response);
-			
-			String paymentId = matcher.group(1);
-			
-			JSONObject json = new JSONObject();
-			json.put("paid", mCheckPayment.isPaymentDone(paymentId));
-			
-			PrintWriter output = response.getWriter();
-			output.println(json.toString());
+		try {
+			Matcher matcher = PAYMENT_ID_REGEX.matcher(request.getPathInfo());
+			if (matcher.matches()) {
+				Utils.prepareResponse(response);
+				
+				String paymentId = matcher.group(1);
+				
+				JSONObject json = new JSONObject();
+				json.put("paid", mCheckPayment.isPaymentDone(paymentId));
+				
+				PrintWriter output = response.getWriter();
+				output.println(json.toString());
+			}
+			else
+				response.sendError(HttpServletResponse.SC_BAD_REQUEST);
 		}
-		else
-			response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+		catch (ServerException e) {
+			Utils.errorResponse(response, e);
+		}
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

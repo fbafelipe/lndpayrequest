@@ -8,8 +8,8 @@ public class TestEnv {
 	
 	private static TestEnv sInstance = new TestEnv();
 	
-	private LndNode mClientNode;
-	private LndNode mServerNode;
+	private LndTestNode mClientNode;
+	private LndTestNode mServerNode;
 	
 	public static TestEnv getInstance() {
 		return sInstance;
@@ -27,12 +27,12 @@ public class TestEnv {
 		}
 	}
 	
-	public LndNode getClientNode() {
+	public LndTestNode getClientNode() {
 		installTmpEnv();
 		return mClientNode;
 	}
 	
-	public LndNode getServerNode() {
+	public LndTestNode getServerNode() {
 		installTmpEnv();
 		return mServerNode;
 	}

@@ -5,18 +5,23 @@
   <version>0.0.1</version>
   <packaging>war</packaging>
   <dependencies>
-  	<dependency>
-  		<groupId>org.json</groupId>
-  		<artifactId>json</artifactId>
-  	</dependency>
+ 	<dependency>
+ 			<groupId>org.json</groupId>
+ 			<artifactId>json</artifactId>
+ 			<version>20180813</version>
+ 			<scope>runtime</scope>
+ 	</dependency>
+ 	<dependency>
+ 		<groupId>mysql</groupId>
+ 		<artifactId>mysql-connector-java</artifactId>
+ 		<version>5.1.47</version>
+ 		<scope>runtime</scope>
+ 	</dependency>
+ 	<dependency>
+ 		<groupId>com.squareup.okhttp3</groupId>
+ 		<artifactId>okhttp</artifactId>
+ 		<version>4.0.1</version>
+ 		<scope>runtime</scope>
+ 	</dependency>
   </dependencies>
-  <dependencyManagement>
-  	<dependencies>
-  		<dependency>
-  			<groupId>org.json</groupId>
-  			<artifactId>json</artifactId>
-  			<version>20180813</version>
-  		</dependency>
-  	</dependencies>
-  </dependencyManagement>
 </project>

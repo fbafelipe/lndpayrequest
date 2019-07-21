@@ -4,11 +4,11 @@ import java.io.File;
 
 import org.json.JSONObject;
 
-public class LndNode {
+public class LndTestNode {
 	private File mWorkingDir;
 	private File mScriptFile;
 	
-	public LndNode(File workingDir, File scriptFile) {
+	public LndTestNode(File workingDir, File scriptFile) {
 		mWorkingDir = workingDir;
 		mScriptFile = scriptFile;
 	}

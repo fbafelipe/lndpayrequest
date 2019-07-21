@@ -1,4 +1,4 @@
-package com.fbafelipe.lndpayrequest.domain;
+package com.fbafelipe.lndpayrequest.domain.model;
 
 public class PaymentRequest {
 	public String paymentId;
