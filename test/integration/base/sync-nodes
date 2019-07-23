@@ -1,14 +1,5 @@
 #!/bin/bash
 
-bitcoind -datadir=bitcoind
-
-sleep 1
-
-lnd --lnddir=lnd-client &
-lnd --lnddir=lnd-server &
-
-sleep 2
-
 # mine a block, so nodes don't get stuck waiting to sync
 ./run-bitcoin-cli generate 1
 
@@ -16,5 +7,3 @@ sleep 1
 
 # connect client and server
 ./run-lncli-client connect 0234e910d973dced9eb6c4d17454f62abc7a45c0841e429c64a3ac19a00ad5d028@localhost:9737
-
-echo Setup done

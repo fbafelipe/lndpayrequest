@@ -1,14 +1,15 @@
 package com.fbafelipe.lndpayrequest.data;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.fbafelipe.lndpayrequest.domain.model.Invoice;
 import com.fbafelipe.lndpayrequest.domain.model.Account;
+import com.fbafelipe.lndpayrequest.domain.model.Invoice;
 import com.fbafelipe.lndpayrequest.domain.model.Withdraw;
 import com.fbafelipe.lndpayrequest.util.Utils;
 
@@ -47,7 +48,7 @@ public class Database {
 				invoice.rHash = resultSet.getString(2);
 				invoice.paymentRequest = resultSet.getString(3);
 				invoice.amountSat = resultSet.getLong(4);
-				invoice.date = resultSet.getLong(5);
+				invoice.date = resultSet.getDate(5).getTime();
 				invoice.paid = resultSet.getBoolean(6);
 				return invoice;
 			}
@@ -63,7 +64,7 @@ public class Database {
 		mInsertInvoiceStmt.setString(3, invoice.rHash);
 		mInsertInvoiceStmt.setString(4, invoice.paymentRequest);
 		mInsertInvoiceStmt.setLong(5, invoice.amountSat);
-		mInsertInvoiceStmt.setLong(6, invoice.date);
+		mInsertInvoiceStmt.setDate(6, new Date(invoice.date));
 		mInsertInvoiceStmt.setBoolean(7, invoice.paid);
 		
 		mInsertInvoiceStmt.execute();
@@ -137,7 +138,7 @@ public class Database {
 		getConnection();
 		mInsertWithdrawStmt.setLong(1, withdraw.accountId);
 		mInsertWithdrawStmt.setLong(2, withdraw.amountSat);
-		mInsertWithdrawStmt.setLong(3, withdraw.date);
+		mInsertWithdrawStmt.setDate(3, new Date(withdraw.date));
 		mInsertWithdrawStmt.execute();
 		
 		// just to force a throw if somehow the insert failed

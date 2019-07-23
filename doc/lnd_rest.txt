@@ -8,8 +8,3 @@ The macaroon data must be sent in the header with key "Grpc-Metadata-macaroon" a
 The cert fingerprint is generated with:
 	
 	$ openssl x509 -fingerprint -sha256 -in ${LN_ROOT}/tls.cert -noout
-
-
-The cert base64 is generated with:
-	
-	$ openssl x509 -in ${LN_ROOT}/tls.cert -pubkey -noout | openssl pkey -pubin -outform der | openssl dgst -sha256 -binary | openssl enc -base64

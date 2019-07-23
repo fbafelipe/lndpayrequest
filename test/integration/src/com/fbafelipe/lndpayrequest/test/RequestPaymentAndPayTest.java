@@ -66,11 +66,13 @@ public class RequestPaymentAndPayTest {
 	public void requestPaymentAndPay() throws Exception {
 		PaymentRequest paymentRequest = requestPayment();
 		
-		assertFalse(checkPaymentPaid(paymentRequest.paymentId));
+		boolean paid = checkPaymentPaid(paymentRequest.paymentId);
+		assertFalse(paid);
 		
 		mClientLnd.payInvoice(paymentRequest.paymentRequest);
 		
-		assertTrue(checkPaymentPaid(paymentRequest.paymentId));
+		paid = checkPaymentPaid(paymentRequest.paymentId);
+		assertTrue(paid);
 	}
 	
 	private PaymentRequest requestPayment() throws Exception {

@@ -3,6 +3,7 @@ package com.fbafelipe.lndpayrequest.di;
 import com.fbafelipe.lndpayrequest.data.Clock;
 import com.fbafelipe.lndpayrequest.data.Database;
 import com.fbafelipe.lndpayrequest.data.LndNode;
+import com.fbafelipe.lndpayrequest.data.OkHttpClientFactory;
 import com.fbafelipe.lndpayrequest.data.PostPayloadReader;
 import com.fbafelipe.lndpayrequest.data.ServerConfig;
 import com.fbafelipe.lndpayrequest.domain.CheckPaymentUseCase;
@@ -19,6 +20,7 @@ public class ModuleFactory {
 	private Clock mClock;
 	private Database mDatabase;
 	private LndNode mLndNode;
+	private OkHttpClientFactory mOkHttpClientFactory;
 	private PostPayloadReader mPostPayloadReader;
 	private ServerConfig mServerConfig;
 	
@@ -63,9 +65,16 @@ public class ModuleFactory {
 	
 	public synchronized LndNode getLndNode() {
 		if (mLndNode == null)
-			mLndNode = new LndNode(getServerConfig());
+			mLndNode = new LndNode(getServerConfig(), getOkHttpClientFactory());
 		
 		return mLndNode;
+	}
+	
+	public synchronized OkHttpClientFactory getOkHttpClientFactory() {
+		if (mOkHttpClientFactory == null)
+			mOkHttpClientFactory = new OkHttpClientFactory();
+		
+		return mOkHttpClientFactory;
 	}
 
 	public synchronized PostPayloadReader getPostPayloadReader() {

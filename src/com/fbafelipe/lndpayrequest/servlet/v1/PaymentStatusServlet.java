@@ -22,7 +22,7 @@ import com.fbafelipe.lndpayrequest.util.Utils;
 public class PaymentStatusServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private static final Pattern PAYMENT_ID_REGEX = Pattern.compile("/(\\w+)");
+	private static final Pattern PAYMENT_ID_REGEX = Pattern.compile("/([\\w-]+)");
 	
 	private CheckPaymentUseCase mCheckPayment;
 	

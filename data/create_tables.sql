@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS Invoice (
 	rHash  VARCHAR(255)  NOT NULL,
 	paymentRequest  TEXT  NOT NULL,
 	amountSat  BIGINT   NOT NULL,
-	date  TIMESTAMP NOT NULL,
+	date  DATETIME NOT NULL,
 	paid  BOOLEAN  NOT NULL,
 PRIMARY KEY(id),
 INDEX Invoice_paymentIdIndex(paymentId),
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS Withdraw (
 	id  BIGINT UNSIGNED  NOT NULL   AUTO_INCREMENT,
 	accountId  BIGINT UNSIGNED NOT NULL,
 	amountSat  BIGINT   NOT NULL,
-	date  TIMESTAMP NOT NULL,
+	date  DATETIME NOT NULL,
 PRIMARY KEY(id),
 INDEX Withdraw_accountIdIndex(accountId)
 );

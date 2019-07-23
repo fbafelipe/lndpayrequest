@@ -32,19 +32,29 @@ public class TestEnv {
 		
 		try {
 			DatabaseTestUtils.resetDatabase(new ServerConfig());
+			
+			Thread.sleep(1000);
 		}
-		catch (ClassNotFoundException | SQLException | IOException e) {
+		catch (ClassNotFoundException | SQLException | IOException | InterruptedException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		}
 	}
 	
 	public LndTestNode getClientNode() {
 		installTmpEnv();
+		
+		if (mClientNode == null)
+			mClientNode = new LndTestNode(TMP_ENV_FOLDER, new File(TMP_ENV_FOLDER, "run-lncli-client"));
+		
 		return mClientNode;
 	}
 	
 	public LndTestNode getServerNode() {
 		installTmpEnv();
+		
+		if (mServerNode == null)
+			mServerNode = new LndTestNode(TMP_ENV_FOLDER, new File(TMP_ENV_FOLDER, "run-lncli-server"));
+		
 		return mServerNode;
 	}
 	
@@ -52,7 +62,36 @@ public class TestEnv {
 		File startScript = new File(TMP_ENV_FOLDER, "start");
 		if (!startScript.exists()) {
 			CommandUtils.runCommand(BASE_ENV_FOLDER, "cp", "-r", BASE_ENV_FOLDER.getAbsolutePath(), TMP_ENV_FOLDER.getAbsolutePath());
-			CommandUtils.runCommand(TMP_ENV_FOLDER, startScript);
+			startDaemons();
 		}
+	}
+	
+	private void startDaemons() {
+		try {
+			startDaemon(new File(TMP_ENV_FOLDER, "start-bitcoin"));
+			
+			Thread.sleep(1000);
+			
+			startDaemon(new File(TMP_ENV_FOLDER, "start-lnd-client"));
+			startDaemon(new File(TMP_ENV_FOLDER, "start-lnd-server"));
+			
+			CommandUtils.runCommand(TMP_ENV_FOLDER, new File(TMP_ENV_FOLDER, "sync-nodes"));
+			
+			Thread.sleep(1000);
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+	}
+	
+	private void startDaemon(final File scriptFile) {
+		Thread thread = new Thread() {
+			@Override
+			public void run() {
+				CommandUtils.runCommand(TMP_ENV_FOLDER, scriptFile);
+			}
+		};
+		thread.setDaemon(true);
+		thread.start();
 	}
 }

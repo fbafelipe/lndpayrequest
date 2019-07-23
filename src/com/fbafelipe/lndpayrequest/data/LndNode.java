@@ -1,9 +1,10 @@
 package com.fbafelipe.lndpayrequest.data;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Set;
 import java.util.UUID;
 
-import okhttp3.CertificatePinner;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -17,18 +18,22 @@ import com.fbafelipe.lndpayrequest.domain.model.Invoice;
 import com.fbafelipe.lndpayrequest.domain.model.InvoiceStatus;
 import com.fbafelipe.lndpayrequest.domain.model.LookupInvoice;
 import com.fbafelipe.lndpayrequest.exception.LndException;
+import com.fbafelipe.lndpayrequest.util.BinaryUtils;
 
 public class LndNode {
 	private static final MediaType MEDIA_TYPE_JSON = MediaType.get("application/json; charset=utf-8");
 	
 	private static final int HTTP_OK = 200;
 	
-	public LndNode(ServerConfig serverConfig) {
-		mServerConfig = serverConfig;
-	}
-	
 	private ServerConfig mServerConfig;
+	private OkHttpClientFactory mClientFactory;
+	
 	private OkHttpClient mClient;
+	
+	public LndNode(ServerConfig serverConfig, OkHttpClientFactory clientFactory) {
+		mServerConfig = serverConfig;
+		mClientFactory = clientFactory;
+	}
 	
 	public Invoice addInvoice(long amountSat) throws LndException {
 		String path = "/v1/invoices";
@@ -52,13 +57,14 @@ public class LndNode {
 	}
 	
 	public LookupInvoice lookupInvoice(Invoice invoice) throws LndException {
-		String path = "/v1/invoice/" + invoice.rHash;
+		String rHashStr = BinaryUtils.base64ToHex(invoice.rHash);
+		String path = "/v1/invoice/" + rHashStr;
 		
 		JSONObject response = restGet(path);
 		
 		try {
 			LookupInvoice lookupInvoice = new LookupInvoice();
-			if ("SETTLED".equals(response.getString("state")))
+			if ("SETTLED".equals(response.optString("state", "OPEN")))
 				lookupInvoice.status = InvoiceStatus.SETTLED;
 			else
 				lookupInvoice.status = InvoiceStatus.OPEN;
@@ -83,7 +89,8 @@ public class LndNode {
 	private JSONObject restCall(String path, JSONObject body) throws LndException {
 		try {
 			Request.Builder requestBuilder = new Request.Builder();
-			requestBuilder.url("https://" + mServerConfig.getLndRestHost() + ":" + mServerConfig.getLndRestPort() + path);
+			requestBuilder.url("https://" + mServerConfig.getLndRestHost() + ":" + mServerConfig.getLndRestPort()
+					+ path);
 			requestBuilder.addHeader("Grpc-Metadata-macaroon", mServerConfig.getLndMacaroon());
 			
 			if (body != null) {
@@ -96,8 +103,10 @@ public class LndNode {
 			Request request = requestBuilder.build();
 			
 			Response response = getClient().newCall(request).execute();
-			if (response.code() != HTTP_OK)
+			if (response.code() != HTTP_OK) {
+				System.out.println("Response: " + response.code());
 				throw new IOException("Http status code " + response.code());
+			}
 			
 			return new JSONObject(response.body().string());
 		}
@@ -108,13 +117,13 @@ public class LndNode {
 	
 	private synchronized OkHttpClient getClient() {
 		if (mClient == null) {
-			CertificatePinner certificatePinner = new CertificatePinner.Builder()
-				.add(mServerConfig.getLndRestHost(), "sha256/" + mServerConfig.getLndHttpsCert())
-				.build();
-			
-			mClient = new OkHttpClient.Builder()
-				.certificatePinner(certificatePinner)
-				.build();
+			try {
+				Set<String> trustedCertificates = Collections.singleton(mServerConfig.getLndHttpsCert());
+				mClient = mClientFactory.createOkHttpClient(trustedCertificates);
+			}
+			catch (Exception e) {
+				throw new RuntimeException(e.getMessage(), e);
+			}
 		}
 		
 		return mClient;

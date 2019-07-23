@@ -42,6 +42,7 @@ public class CheckPaymentUseCase {
 			throw new ServerException(ServerError.DATABASE_ERROR);
 		}
 		catch (LndException e) {
+			e.printStackTrace();
 			throw new ServerException(ServerError.LND_ERROR);
 		}
 	}
