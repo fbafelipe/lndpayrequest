@@ -1,5 +1,5 @@
 jdbc.driver=DRIVER
-jdbc.url=HOST/DATABASE
+jdbc.url=jdbc:mysql://HOST/DATABASE
 jdbc.username=USERNAME
 jdbc.password=PASSWORD
 lnd.resthost=HOST

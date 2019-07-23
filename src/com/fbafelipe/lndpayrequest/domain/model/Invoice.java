@@ -2,7 +2,7 @@ package com.fbafelipe.lndpayrequest.domain.model;
 
 public class Invoice {
 	public String paymentId;
-	public long userId;
+	public long accountId;
 	public String rHash;
 	public String paymentRequest;
 	public long amountSat;

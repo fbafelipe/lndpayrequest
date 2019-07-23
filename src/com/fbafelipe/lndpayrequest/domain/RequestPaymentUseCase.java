@@ -25,15 +25,15 @@ public class RequestPaymentUseCase {
 	
 	public PaymentRequest requestPayment(String apikey, long amount, Currency currency) throws ServerException {
 		try {
-			Long userId = mDatabase.selectUserIdFromApikey(apikey);
-			if (userId == null)
+			Long accountId = mDatabase.selectAccountIdFromApikey(apikey);
+			if (accountId == null)
 				throw new ServerException(ServerError.BAD_REQUEST);
 			
 			if (amount <= 0)
 				throw new ServerException(ServerError.BAD_REQUEST);
 			
 			Invoice invoice = mLndNode.addInvoice(amount);
-			invoice.userId = userId;
+			invoice.accountId = accountId;
 			invoice.date = mClock.currentTimeMillis();
 			invoice.paid = false;
 			

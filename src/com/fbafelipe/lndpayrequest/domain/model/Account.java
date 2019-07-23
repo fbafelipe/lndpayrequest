@@ -1,6 +1,6 @@
 package com.fbafelipe.lndpayrequest.domain.model;
 
-public class User {
+public class Account {
 	public long id;
 	public String username;
 	public String apikey;

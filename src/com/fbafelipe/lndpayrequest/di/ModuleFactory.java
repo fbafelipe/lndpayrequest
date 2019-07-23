@@ -25,8 +25,6 @@ public class ModuleFactory {
 	public static ModuleFactory getInstance() {
 		return sInstance;
 	}
-	
-	private ModuleFactory() {}
 
 	public synchronized RequestPaymentUseCase getRequestPayment() {
 		if (mRequestPayment == null)

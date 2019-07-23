@@ -1,4 +1,4 @@
-package com.fbafelipe.lndpayrequest.test;
+package com.fbafelipe.lndpayrequest.testutils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

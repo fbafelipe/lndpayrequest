@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS Invoice (
 	id  BIGINT UNSIGNED  NOT NULL   AUTO_INCREMENT,
 	paymentId  VARCHAR(255) NOT NULL,
-	userId  BIGINT UNSIGNED NOT NULL,
+	accountId  BIGINT UNSIGNED NOT NULL,
 	rHash  VARCHAR(255)  NOT NULL,
 	paymentRequest  TEXT  NOT NULL,
 	amountSat  BIGINT   NOT NULL,
@@ -9,25 +9,25 @@ CREATE TABLE IF NOT EXISTS Invoice (
 	paid  BOOLEAN  NOT NULL,
 PRIMARY KEY(id),
 INDEX Invoice_paymentIdIndex(paymentId),
-INDEX Invoice_userIdIndex(userId)
+INDEX Invoice_accountIdIndex(accountId)
 );
 
-CREATE TABLE IF NOT EXISTS User (
+CREATE TABLE IF NOT EXISTS Account (
 	id  BIGINT UNSIGNED  NOT NULL   AUTO_INCREMENT,
 	username   VARCHAR(255) NOT NULL,
 	apikey   VARCHAR(255) NOT NULL,
 	passwordHash   VARCHAR(255) NOT NULL,
 	passwordSalt   VARCHAR(255) NOT NULL,
 PRIMARY KEY(id),
-INDEX User_usernameIndex(username),
-INDEX User_apikeyIndex(apikey)
+INDEX Account_usernameIndex(username),
+INDEX Account_apikeyIndex(apikey)
 );
 
 CREATE TABLE IF NOT EXISTS Withdraw (
 	id  BIGINT UNSIGNED  NOT NULL   AUTO_INCREMENT,
-	userId  BIGINT UNSIGNED NOT NULL,
+	accountId  BIGINT UNSIGNED NOT NULL,
 	amountSat  BIGINT   NOT NULL,
 	date  TIMESTAMP NOT NULL,
 PRIMARY KEY(id),
-INDEX Withdraw_userIdIndex(userId)
+INDEX Withdraw_accountIdIndex(accountId)
 );
