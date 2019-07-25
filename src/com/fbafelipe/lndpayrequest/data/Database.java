@@ -9,7 +9,9 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 
 import com.fbafelipe.lndpayrequest.domain.model.Account;
+import com.fbafelipe.lndpayrequest.domain.model.Currency;
 import com.fbafelipe.lndpayrequest.domain.model.Invoice;
+import com.fbafelipe.lndpayrequest.domain.model.Quote;
 import com.fbafelipe.lndpayrequest.domain.model.Withdraw;
 import com.fbafelipe.lndpayrequest.util.Utils;
 
@@ -30,6 +32,9 @@ public class Database {
 	private PreparedStatement mSelectAccountInvoiceAmountSumStmt;
 	private PreparedStatement mSelectAccountWithdrawAmountSumStmt;
 	private PreparedStatement mInsertWithdrawStmt;
+	
+	private PreparedStatement mSelectQuoteStmt;
+	private PreparedStatement mUpdateQuoteStmt;
 	
 	public Database(ServerConfig serverConfig) {
 		mServerConfig = serverConfig;
@@ -106,7 +111,7 @@ public class Database {
 		user.id = getGeneratedKey(mInsertAccountStmt);
 	}
 	
-	public synchronized Long selectAccountInvoiceAmountSum(long accountId) throws SQLException {
+	public synchronized long selectAccountInvoiceAmountSum(long accountId) throws SQLException {
 		getConnection();
 		mSelectAccountInvoiceAmountSumStmt.setLong(1, accountId);
 		mSelectAccountInvoiceAmountSumStmt.execute();
@@ -116,11 +121,11 @@ public class Database {
 				return resultSet.getLong(1);
 			}
 			
-			return null;
+			return 0L;
 		}
 	}
 	
-	public synchronized Long selectAccountWithdrawAmountSum(long accountId) throws SQLException {
+	public synchronized long selectAccountWithdrawAmountSum(long accountId) throws SQLException {
 		getConnection();
 		mSelectAccountWithdrawAmountSumStmt.setLong(1, accountId);
 		mSelectAccountWithdrawAmountSumStmt.execute();
@@ -130,7 +135,7 @@ public class Database {
 				return resultSet.getLong(1);
 			}
 			
-			return null;
+			return 0L;
 		}
 	}
 	
@@ -143,6 +148,39 @@ public class Database {
 		
 		// just to force a throw if somehow the insert failed
 		getGeneratedKey(mInsertWithdrawStmt);
+	}
+	
+	public synchronized Quote selectQuote(Currency currency) throws SQLException {
+		getConnection();
+		mSelectQuoteStmt.setString(1, currency.identifier);
+		
+		mSelectQuoteStmt.execute();
+		
+		try (ResultSet resultSet = mSelectQuoteStmt.getResultSet()) {
+			if (resultSet.next()) {
+				Quote quote = new Quote();
+				quote.currency = currency;
+				quote.bitcoinValue = resultSet.getDouble(1);
+				quote.lastUpdate = resultSet.getTimestamp(2).getTime();
+				return quote;
+			}
+			
+			return null;
+		}
+	}
+	
+	public synchronized void updateQuote(Quote quote) throws SQLException {
+		getConnection();
+		
+		Timestamp lastUpdate = new Timestamp(quote.lastUpdate);
+		
+		mUpdateQuoteStmt.setString(1, quote.currency.identifier);
+		mUpdateQuoteStmt.setDouble(2, quote.bitcoinValue);
+		mUpdateQuoteStmt.setTimestamp(3, lastUpdate);
+		mUpdateQuoteStmt.setDouble(4, quote.bitcoinValue);
+		mUpdateQuoteStmt.setTimestamp(5, lastUpdate);
+		
+		mUpdateQuoteStmt.execute();
 	}
 	
 	private synchronized Connection getConnection() throws SQLException {
@@ -236,5 +274,15 @@ public class Database {
 		mInsertWithdrawStmt = connection.prepareStatement("INSERT INTO Withdraw"
 				+ " (accountId, amountSat, date)"
 				+ " VALUES (?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+		
+		mSelectQuoteStmt = connection.prepareStatement("SELECT"
+				+ " bitcoinValue, lastUpdate"
+				+ " FROM Quote WHERE currency=?");
+		
+		mUpdateQuoteStmt = connection.prepareStatement("INSERT INTO Quote"
+				+ " (currency, bitcoinValue, lastUpdate)"
+				+ " VALUES (?, ?, ?)"
+				+ " ON DUPLICATE KEY UPDATE"
+				+ " bitcoinValue=?, lastUpdate=?");
 	}
 }

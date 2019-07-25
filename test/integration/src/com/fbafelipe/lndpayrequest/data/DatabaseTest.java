@@ -1,8 +1,6 @@
 package com.fbafelipe.lndpayrequest.data;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import java.util.UUID;
 
@@ -12,7 +10,9 @@ import org.junit.Test;
 
 import com.fbafelipe.lndpayrequest.di.ModuleFactory;
 import com.fbafelipe.lndpayrequest.domain.model.Account;
+import com.fbafelipe.lndpayrequest.domain.model.Currency;
 import com.fbafelipe.lndpayrequest.domain.model.Invoice;
+import com.fbafelipe.lndpayrequest.domain.model.Quote;
 import com.fbafelipe.lndpayrequest.domain.model.Withdraw;
 import com.fbafelipe.lndpayrequest.testutils.TestEnv;
 
@@ -137,6 +137,65 @@ public class DatabaseTest {
 		assertEquals(7, account1WithdrawSum);
 		assertEquals(8, account2WithdrawSum);
 		assertEquals(0, account3WithdrawSum);
+	}
+	
+	@Test
+	public void testQuote() throws Exception {
+		Quote usdQuote = new Quote();
+		usdQuote.currency = Currency.USD;
+		usdQuote.bitcoinValue = 9000.01; // It's over 9000!
+		usdQuote.lastUpdate = 1000000L;
+		
+		Quote brlQuote = new Quote();
+		brlQuote.currency = Currency.BRL;
+		brlQuote.bitcoinValue = 40000.00;
+		brlQuote.lastUpdate = 1000000L;
+		
+		mDatabase.updateQuote(usdQuote);
+		mDatabase.updateQuote(brlQuote);
+		
+		// check results
+		Quote result = mDatabase.selectQuote(Currency.USD);
+		assertEquals(Currency.USD, result.currency);
+		assertEquals(9000.01, result.bitcoinValue, 0.000001);
+		assertEquals(1000000L, result.lastUpdate);
+		
+		result = mDatabase.selectQuote(Currency.BRL);
+		assertEquals(Currency.BRL, result.currency);
+		assertEquals(40000.00, result.bitcoinValue, 0.000001);
+		assertEquals(1000000L, result.lastUpdate);
+		
+		// update
+		usdQuote.bitcoinValue = 20000.0;
+		usdQuote.lastUpdate = 2000000L;
+		
+		brlQuote.bitcoinValue = 80000.00;
+		brlQuote.lastUpdate = 2000000L;
+		
+		mDatabase.updateQuote(usdQuote);
+		mDatabase.updateQuote(brlQuote);
+		
+		// check results
+		result = mDatabase.selectQuote(Currency.USD);
+		assertEquals(Currency.USD, result.currency);
+		assertEquals(20000.00, result.bitcoinValue, 0.000001);
+		assertEquals(2000000L, result.lastUpdate);
+		
+		result = mDatabase.selectQuote(Currency.BRL);
+		assertEquals(Currency.BRL, result.currency);
+		assertEquals(80000.00, result.bitcoinValue, 0.000001);
+		assertEquals(2000000L, result.lastUpdate);
+	}
+	
+	@Test
+	public void testSelectNotFound() throws Exception {
+		Invoice invoice = mDatabase.selectInvoice("aaa");
+		Long accountId = mDatabase.selectAccountIdFromApikey("bbb");
+		Quote quote = mDatabase.selectQuote(Currency.SATOSHI);
+		
+		assertNull(invoice);
+		assertNull(accountId);
+		assertNull(quote);
 	}
 	
 	private Account createAndInsertAccount(String userName, String apiKey) throws Exception {
