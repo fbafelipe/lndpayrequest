@@ -1,12 +1,12 @@
 package com.fbafelipe.lndpayrequest.data;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 
 import com.fbafelipe.lndpayrequest.domain.model.Account;
 import com.fbafelipe.lndpayrequest.domain.model.Invoice;
@@ -48,7 +48,7 @@ public class Database {
 				invoice.rHash = resultSet.getString(2);
 				invoice.paymentRequest = resultSet.getString(3);
 				invoice.amountSat = resultSet.getLong(4);
-				invoice.date = resultSet.getDate(5).getTime();
+				invoice.date = resultSet.getTimestamp(5).getTime();
 				invoice.paid = resultSet.getBoolean(6);
 				return invoice;
 			}
@@ -64,7 +64,7 @@ public class Database {
 		mInsertInvoiceStmt.setString(3, invoice.rHash);
 		mInsertInvoiceStmt.setString(4, invoice.paymentRequest);
 		mInsertInvoiceStmt.setLong(5, invoice.amountSat);
-		mInsertInvoiceStmt.setDate(6, new Date(invoice.date));
+		mInsertInvoiceStmt.setTimestamp(6, new Timestamp(invoice.date));
 		mInsertInvoiceStmt.setBoolean(7, invoice.paid);
 		
 		mInsertInvoiceStmt.execute();
@@ -138,7 +138,7 @@ public class Database {
 		getConnection();
 		mInsertWithdrawStmt.setLong(1, withdraw.accountId);
 		mInsertWithdrawStmt.setLong(2, withdraw.amountSat);
-		mInsertWithdrawStmt.setDate(3, new Date(withdraw.date));
+		mInsertWithdrawStmt.setTimestamp(3, new Timestamp(withdraw.date));
 		mInsertWithdrawStmt.execute();
 		
 		// just to force a throw if somehow the insert failed
@@ -228,7 +228,7 @@ public class Database {
 				+ " VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 		
 		mSelectAccountInvoiceAmountSumStmt = connection.prepareStatement("SELECT SUM(amountSat)"
-				+ " FROM Invoice WHERE accountId=?");
+				+ " FROM Invoice WHERE accountId=? AND paid is TRUE");
 		
 		mSelectAccountWithdrawAmountSumStmt = connection.prepareStatement("SELECT SUM(amountSat)"
 				+ " FROM Withdraw WHERE accountId=?");

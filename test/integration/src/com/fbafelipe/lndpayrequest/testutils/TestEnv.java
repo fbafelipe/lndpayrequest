@@ -30,12 +30,21 @@ public class TestEnv {
 		if (TMP_ENV_FOLDER.exists())
 			CommandUtils.runCommand(TMP_ENV_FOLDER, "rm", "-rf", TMP_ENV_FOLDER.getAbsolutePath());
 		
+		resetDatabase();
+		
 		try {
-			DatabaseTestUtils.resetDatabase(new ServerConfig());
-			
 			Thread.sleep(1000);
 		}
-		catch (ClassNotFoundException | SQLException | IOException | InterruptedException e) {
+		catch (InterruptedException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+	}
+	
+	public void resetDatabase() {
+		try {
+			DatabaseTestUtils.resetDatabase(new ServerConfig());
+		}
+		catch (ClassNotFoundException | SQLException | IOException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		}
 	}
