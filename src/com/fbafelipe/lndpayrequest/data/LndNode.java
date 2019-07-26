@@ -1,6 +1,7 @@
 package com.fbafelipe.lndpayrequest.data;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.util.Collections;
 import java.util.Set;
 import java.util.UUID;
@@ -23,16 +24,20 @@ import com.fbafelipe.lndpayrequest.util.BinaryUtils;
 public class LndNode {
 	private static final MediaType MEDIA_TYPE_JSON = MediaType.get("application/json; charset=utf-8");
 	
-	private static final int HTTP_OK = 200;
-	
 	private ServerConfig mServerConfig;
-	private OkHttpClientFactory mClientFactory;
 	
 	private OkHttpClient mClient;
 	
 	public LndNode(ServerConfig serverConfig, OkHttpClientFactory clientFactory) {
 		mServerConfig = serverConfig;
-		mClientFactory = clientFactory;
+		
+		try {
+			Set<String> trustedCertificates = Collections.singleton(mServerConfig.getLndHttpsCert());
+			mClient = clientFactory.createOkHttpClientWithPinnedCert(trustedCertificates);
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
 	}
 	
 	public Invoice addInvoice(long amountSat) throws LndException {
@@ -102,30 +107,14 @@ public class LndNode {
 			
 			Request request = requestBuilder.build();
 			
-			Response response = getClient().newCall(request).execute();
-			if (response.code() != HTTP_OK) {
-				System.out.println("Response: " + response.code());
+			Response response = mClient.newCall(request).execute();
+			if (response.code() != HttpURLConnection.HTTP_OK)
 				throw new IOException("Http status code " + response.code());
-			}
 			
 			return new JSONObject(response.body().string());
 		}
 		catch (Exception e) {
 			throw new LndException(e.getMessage(), e);
 		}
-	}
-	
-	private synchronized OkHttpClient getClient() {
-		if (mClient == null) {
-			try {
-				Set<String> trustedCertificates = Collections.singleton(mServerConfig.getLndHttpsCert());
-				mClient = mClientFactory.createOkHttpClient(trustedCertificates);
-			}
-			catch (Exception e) {
-				throw new RuntimeException(e.getMessage(), e);
-			}
-		}
-		
-		return mClient;
 	}
 }

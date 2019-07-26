@@ -22,7 +22,11 @@ import com.fbafelipe.lndpayrequest.util.BinaryUtils;
 public class OkHttpClientFactory {
 	private static final TrustManager TRUST_MANAGERS[] = {new TrustManagerImpl()};
 	
-	public OkHttpClient createOkHttpClient(Set<String> trustedCertificates) throws NoSuchAlgorithmException, KeyManagementException {
+	public OkHttpClient createOkHttpClient() {
+		return new OkHttpClient.Builder().build();
+	}
+	
+	public OkHttpClient createOkHttpClientWithPinnedCert(Set<String> trustedCertificates) throws NoSuchAlgorithmException, KeyManagementException {
 			SSLContext sslContext = SSLContext.getInstance("SSL");
 			sslContext.init(null, TRUST_MANAGERS, new SecureRandom());
 			SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();

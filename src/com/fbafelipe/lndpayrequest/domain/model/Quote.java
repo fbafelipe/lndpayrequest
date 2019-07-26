@@ -7,4 +7,12 @@ public class Quote {
 	public double bitcoinValue;
 	
 	public long lastUpdate;
+	
+	public Quote() {}
+	
+	public Quote(Currency currency, double bitcoinValue, long lastUpdate) {
+		this.currency = currency;
+		this.bitcoinValue = bitcoinValue;
+		this.lastUpdate = lastUpdate;
+	}
 }
