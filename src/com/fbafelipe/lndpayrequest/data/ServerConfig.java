@@ -59,6 +59,7 @@ public class ServerConfig {
 				}
 				catch (IOException e) {
 					mProperties = null;
+					// TODO log exception
 					throw new RuntimeException();
 				}
 			}

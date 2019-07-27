@@ -16,5 +16,5 @@ Then run:
 $ sudo docker stop CONTAINER_ID
 $ sudo docker rm CONTAINER_ID
 $ sudo docker rmi lndpayrequest
-$ sudo docker load -i lndpayrequest
+$ sudo docker load -i lndpayrequest.tar
 $ sudo docker run -d  --restart=always -p 8080:8080 -v FOLDER_CONTAINING_CONFIG_CFG:/etc/lndpayrequest lndpayrequest
