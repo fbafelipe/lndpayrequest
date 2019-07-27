@@ -2,5 +2,6 @@ build/
 .settings/
 test/integration/tmp
 target/
-data/config.cfg
-
+config.cfg
+docker/LndPayRequest.war
+docker/lndpayrequest.tar

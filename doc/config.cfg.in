@@ -1,3 +1,5 @@
+# Use this file as base, replace the values for the environment
+# Set the server environment variable LNDPAYREQUEST_CONFIG with the path were the config file will be on the server
 jdbc.driver=DRIVER
 jdbc.url=jdbc:mysql://HOST/DATABASE
 jdbc.username=USERNAME
@@ -6,3 +8,4 @@ lnd.resthost=HOST
 lnd.restport=PORT
 lnd.macaroon=MACAROON_DATA
 lnd.httpscert=HTTPS_CERT_DATA
+debug=true|false

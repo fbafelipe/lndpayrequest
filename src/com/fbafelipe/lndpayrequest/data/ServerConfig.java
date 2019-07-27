@@ -1,9 +1,13 @@
 package com.fbafelipe.lndpayrequest.data;
 
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
 public class ServerConfig {
+	private static final String CONFIG_PATH_ENV = "LNDPAYREQUEST_CONFIG";
+	
 	private Properties mProperties;
 	
 	public String getJdbcDriver() {
@@ -46,8 +50,12 @@ public class ServerConfig {
 		synchronized (this) {
 			if (mProperties == null) {
 				try {
+					String path = System.getenv(CONFIG_PATH_ENV);
+					if (path == null || path.isEmpty())
+						throw new IOException("Error reading config file");
+					
 					mProperties = new Properties();
-					mProperties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("config.cfg"));
+					mProperties.load(new FileReader(new File(path)));
 				}
 				catch (IOException e) {
 					mProperties = null;

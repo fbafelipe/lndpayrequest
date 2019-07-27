@@ -24,6 +24,7 @@ import com.fbafelipe.lndpayrequest.data.Database;
 import com.fbafelipe.lndpayrequest.data.PostPayloadReader;
 import com.fbafelipe.lndpayrequest.di.ModuleFactory;
 import com.fbafelipe.lndpayrequest.domain.model.Account;
+import com.fbafelipe.lndpayrequest.domain.model.Currency;
 import com.fbafelipe.lndpayrequest.domain.model.PaymentRequest;
 import com.fbafelipe.lndpayrequest.servlet.v1.PaymentRequestServlet;
 import com.fbafelipe.lndpayrequest.servlet.v1.PaymentStatusServlet;
@@ -63,8 +64,8 @@ public class RequestPaymentAndPayTest {
 	}
 	
 	@Test
-	public void requestPaymentAndPay() throws Exception {
-		PaymentRequest paymentRequest = requestPayment();
+	public void requestPaymentSatAndPay() throws Exception {
+		PaymentRequest paymentRequest = requestPayment(Currency.SATOSHI, "1000");
 		
 		boolean paid = checkPaymentPaid(paymentRequest.paymentId);
 		assertFalse(paid);
@@ -75,7 +76,34 @@ public class RequestPaymentAndPayTest {
 		assertTrue(paid);
 	}
 	
-	private PaymentRequest requestPayment() throws Exception {
+	@Test
+	public void requestPaymentBrlAndPay() throws Exception {
+		PaymentRequest paymentRequest = requestPayment(Currency.BRL, "5");
+		
+		boolean paid = checkPaymentPaid(paymentRequest.paymentId);
+		assertFalse(paid);
+		
+		mClientLnd.payInvoice(paymentRequest.paymentRequest);
+		
+		paid = checkPaymentPaid(paymentRequest.paymentId);
+		assertTrue(paid);
+	}
+	
+	@Test
+	public void requestPaymentUsdAndPay() throws Exception {
+		PaymentRequest paymentRequest = requestPayment(Currency.USD, "1.25");
+		
+		boolean paid = checkPaymentPaid(paymentRequest.paymentId);
+		assertFalse(paid);
+		
+		mClientLnd.payInvoice(paymentRequest.paymentRequest);
+		Thread.sleep(1000);
+		
+		paid = checkPaymentPaid(paymentRequest.paymentId);
+		assertTrue(paid);
+	}
+	
+	private PaymentRequest requestPayment(Currency currency, String amount) throws Exception {
 		HttpServletRequest request = mock(HttpServletRequest.class);
 		HttpServletResponse response = mock(HttpServletResponse.class);
 		
@@ -83,8 +111,8 @@ public class RequestPaymentAndPayTest {
 		when(mPostPayloadReader.readStringPayload(Mockito.any())).thenReturn(
 				"{"
 				+ "\"apikey\": \"testapikey\","
-				+ "\"amount\": 1000,"
-				+ "\"currency\": \"sat\""
+				+ "\"amount\": " + amount + ","
+				+ "\"currency\": \"" + currency.identifier + "\""
 				+ "}"
 		);
 		

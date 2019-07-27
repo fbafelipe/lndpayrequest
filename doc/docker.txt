@@ -1,0 +1,20 @@
+To create the docker image:
+
+Build the WAR file to docker/LndPayRequest.war
+Go to docker folder and run:
+
+$ docker build -t lndpayrequest .
+$ docker save lndpayrequest -o lndpayrequest.tar
+
+To deploy the application, copy lndpayrequest.tar to the server and:
+
+Check the CONTAINER_ID with:
+$ sudo docker ps
+
+Then run:
+
+$ sudo docker stop CONTAINER_ID
+$ sudo docker rm CONTAINER_ID
+$ sudo docker rmi lndpayrequest
+$ sudo docker load -i lndpayrequest
+$ sudo docker run -d  --restart=always -p 8080:8080 -v FOLDER_CONTAINING_CONFIG_CFG:/etc/lndpayrequest lndpayrequest
