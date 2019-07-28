@@ -16,6 +16,8 @@ import com.fbafelipe.lndpayrequest.exception.ServerException;
 public class RequestPaymentUseCase {
 	private static final long SATOSHI_BITCOIN_VALUE = 100000000L;
 	
+	private static final long MAX_PAYMENT_VALUE_SAT = 10000000L;
+	
 	private Database mDatabase;
 	private QuoteRepository mQuoteRepository;
 	private LndNode mLndNode;
@@ -36,7 +38,7 @@ public class RequestPaymentUseCase {
 			
 			long amountSat = convertToSatoshi(amount, currency);
 			
-			if (amountSat <= 0)
+			if (amountSat <= 0 || amountSat > MAX_PAYMENT_VALUE_SAT)
 				throw new ServerException(ServerError.BAD_REQUEST);
 			
 			Invoice invoice = mLndNode.addInvoice(amountSat);

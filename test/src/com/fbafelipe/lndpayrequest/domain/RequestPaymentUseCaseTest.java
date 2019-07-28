@@ -175,6 +175,19 @@ public class RequestPaymentUseCaseTest {
 	}
 	
 	@Test
+	public void testInvalidAmountTooLarge() throws Exception {
+		when(mDatabase.selectAccountIdFromApikey(APIKEY)).thenReturn(ACCOUNT_ID);
+		
+		try {
+			mRequestPaymentUseCase.requestPayment(APIKEY, 10000001L, Currency.SATOSHI);
+			fail("Should have thrown");
+		}
+		catch (ServerException e) {
+			assertEquals(ServerError.BAD_REQUEST, e.getError());
+		}
+	}
+	
+	@Test
 	public void testInvalidPositiveInfiniteSatoshiAmount() throws Exception {
 		when(mDatabase.selectAccountIdFromApikey(APIKEY)).thenReturn(ACCOUNT_ID);
 		
