@@ -2,6 +2,8 @@ package com.fbafelipe.lndpayrequest.servlet.v1;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,6 +27,8 @@ import com.fbafelipe.lndpayrequest.util.Utils;
 public class PaymentRequestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	private static final Logger LOGGER = Logger.getLogger(PaymentRequestServlet.class.getSimpleName());
+	
 	private RequestPaymentUseCase mRequestPayment;
 	private PostPayloadReader mPostPayloadReader;
 	
@@ -38,10 +42,14 @@ public class PaymentRequestServlet extends HttpServlet {
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		LOGGER.log(Level.INFO, "Serving GET request from " + request.getRemoteAddr());
+		
 		response.sendError(HttpServletResponse.SC_BAD_REQUEST);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		LOGGER.log(Level.INFO, "Serving POST request from " + request.getRemoteAddr());
+		
 		String apikey;
 		Number amount;
 		Currency currency;
@@ -65,11 +73,15 @@ public class PaymentRequestServlet extends HttpServlet {
 			Utils.prepareResponse(response);
 			PrintWriter output = response.getWriter();
 			output.println(json.toString());
+			
+			LOGGER.log(Level.INFO, request.getRemoteAddr() + " requested payment of " + amount + " " + currency + ". paymentId=" + paymentRequest.paymentId);
 		}
 		catch (JSONException e) {
+			LOGGER.log(Level.INFO, e.getMessage(), e);
 			response.sendError(HttpServletResponse.SC_BAD_REQUEST);
 		}
-		catch (ServerException e) {
+		catch (Exception e) {
+			LOGGER.log(Level.INFO, e.getMessage(), e);
 			Utils.errorResponse(response, e);
 		}
 	}

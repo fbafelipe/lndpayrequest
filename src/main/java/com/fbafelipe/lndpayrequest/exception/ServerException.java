@@ -8,6 +8,11 @@ public class ServerException extends Exception {
 		mError = error;
 	}
 	
+	public ServerException(ServerError error, Throwable cause) {
+		super(error.name(), cause);
+		mError = error;
+	}
+	
 	public ServerError getError() {
 		return mError;
 	}

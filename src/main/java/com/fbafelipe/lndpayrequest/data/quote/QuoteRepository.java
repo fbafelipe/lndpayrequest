@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.fbafelipe.lndpayrequest.data.Clock;
 import com.fbafelipe.lndpayrequest.data.Database;
@@ -11,6 +13,8 @@ import com.fbafelipe.lndpayrequest.domain.model.Currency;
 import com.fbafelipe.lndpayrequest.domain.model.Quote;
 
 public class QuoteRepository {
+	private static final Logger LOGGER = Logger.getLogger(QuoteRepository.class.getSimpleName());
+	
 	public static long RENEW_CACHE_TIME = TimeUnit.MINUTES.toMillis(5);
 	public static long MAX_CACHE_TIME = TimeUnit.DAYS.toMillis(1);
 	
@@ -62,7 +66,7 @@ public class QuoteRepository {
 			mDatabase.updateQuote(quote);
 		}
 		catch (SQLException e) {
-			// TODO log exception
+			LOGGER.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
 	
@@ -75,7 +79,7 @@ public class QuoteRepository {
 				mCache.put(currency, quote);
 			}
 			catch (SQLException e) {
-				// TODO log exception
+				LOGGER.log(Level.SEVERE, e.getMessage(), e);
 			}
 		}
 		

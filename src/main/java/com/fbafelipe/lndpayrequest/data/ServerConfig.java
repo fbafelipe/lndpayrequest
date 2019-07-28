@@ -4,8 +4,12 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ServerConfig {
+	private static final Logger LOGGER = Logger.getLogger(ServerConfig.class.getSimpleName());
+	
 	private static final String CONFIG_PATH_ENV = "LNDPAYREQUEST_CONFIG";
 	
 	private Properties mProperties;
@@ -59,7 +63,7 @@ public class ServerConfig {
 				}
 				catch (IOException e) {
 					mProperties = null;
-					// TODO log exception
+					LOGGER.log(Level.SEVERE, "Failed to load config.cfg", e);
 					throw new RuntimeException();
 				}
 			}

@@ -27,18 +27,22 @@ public class Utils {
 		response.setCharacterEncoding("UTF-8");
 	}
 	
-	public static void errorResponse(HttpServletResponse response, ServerException error) throws IOException {
-		switch (error.getError()) {
-			case BAD_REQUEST:
-				response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-				break;
-			case DATABASE_ERROR:
-				response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-				break;
-			case LND_ERROR:
-				response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-				break;
+	public static void errorResponse(HttpServletResponse response, Exception error) throws IOException {
+		if (error instanceof ServerException) {
+			switch (((ServerException) error).getError()) {
+				case BAD_REQUEST:
+					response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+					break;
+				case DATABASE_ERROR:
+					response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+					break;
+				case LND_ERROR:
+					response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+					break;
+			}
 		}
+		else
+			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 	}
 	
 	public static String readResource(String resource) {

@@ -39,11 +39,10 @@ public class CheckPaymentUseCase {
 			return false;
 		}
 		catch (SQLException e) {
-			throw new ServerException(ServerError.DATABASE_ERROR);
+			throw new ServerException(ServerError.DATABASE_ERROR, e);
 		}
 		catch (LndException e) {
-			e.printStackTrace();
-			throw new ServerException(ServerError.LND_ERROR);
+			throw new ServerException(ServerError.LND_ERROR, e);
 		}
 	}
 }

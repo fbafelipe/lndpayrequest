@@ -2,6 +2,8 @@ package com.fbafelipe.lndpayrequest.data.quote;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -13,6 +15,8 @@ import com.fbafelipe.lndpayrequest.data.OkHttpClientFactory;
 
 
 public class BrlQuoteDataSource implements QuoteDataSource {
+	private static final Logger LOGGER = Logger.getLogger(BrlQuoteDataSource.class.getSimpleName());
+	
 	private static final String URL = "https://www.mercadobitcoin.net/api/BTC/ticker";
 	
 	private OkHttpClient mClient;
@@ -42,7 +46,7 @@ public class BrlQuoteDataSource implements QuoteDataSource {
 			return value;
 		}
 		catch (Exception e) {
-			// TODO log exception
+			LOGGER.log(Level.WARNING, e.getMessage(), e);
 			return null;
 		}
 	}
