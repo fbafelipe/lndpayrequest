@@ -1,4 +1,4 @@
-package com.fbafelipe.lndpaymentrequest.domain;
+package com.fbafelipe.lndpayrequest.domain;
 
 import static org.junit.Assert.*;
 

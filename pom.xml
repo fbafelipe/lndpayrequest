@@ -9,19 +9,16 @@
  			<groupId>org.json</groupId>
  			<artifactId>json</artifactId>
  			<version>20180813</version>
- 			<scope>runtime</scope>
  	</dependency>
  	<dependency>
  		<groupId>mysql</groupId>
  		<artifactId>mysql-connector-java</artifactId>
  		<version>5.1.47</version>
- 		<scope>runtime</scope>
  	</dependency>
  	<dependency>
  		<groupId>com.squareup.okhttp3</groupId>
  		<artifactId>okhttp</artifactId>
  		<version>4.0.1</version>
- 		<scope>runtime</scope>
  	</dependency>
  	<dependency>
  		<groupId>org.mockito</groupId>
@@ -29,5 +26,27 @@
  		<version>3.0.0</version>
  		<scope>test</scope>
  	</dependency>
+ 	<dependency>
+ 		<groupId>org.apache.tomcat</groupId>
+ 		<artifactId>tomcat-servlet-api</artifactId>
+ 		<version>8.5.0</version>
+ 		<scope>provided</scope>
+ 	</dependency>
   </dependencies>
+  <build>
+  	<plugins>
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+	  		<artifactId>maven-war-plugin</artifactId>
+	        <version>3.2.3</version>
+            <configuration>
+                <failOnMissingWebXml>false</failOnMissingWebXml>
+            </configuration>
+  		</plugin>
+  	</plugins>
+  </build>
+  <properties>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+    </properties>
 </project>

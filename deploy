@@ -1,0 +1,17 @@
+#!/bin/bash
+
+
+mvn clean package
+cp target/LndPayRequest*.war docker/LndPayRequest.war
+
+cd docker
+make
+scp lndpayrequest.tar sha1hash.local:
+
+
+echo "*************************************************"
+echo "* Installing on server"
+echo "*************************************************"
+
+ssh -t sha1hash.local ./bin/deploydocker lndpayrequest.tar
+ssh sha1hash.local mv lndpayrequest.tar docker/images

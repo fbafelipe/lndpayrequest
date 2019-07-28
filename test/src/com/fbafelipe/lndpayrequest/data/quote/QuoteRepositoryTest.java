@@ -1,4 +1,4 @@
-package com.fbafelipe.lndpaymentrequest.data.quote;
+package com.fbafelipe.lndpayrequest.data.quote;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
