@@ -6,6 +6,8 @@ import com.fbafelipe.lndpayrequest.data.LndNode;
 import com.fbafelipe.lndpayrequest.data.OkHttpClientFactory;
 import com.fbafelipe.lndpayrequest.data.PostPayloadReader;
 import com.fbafelipe.lndpayrequest.data.ServerConfig;
+import com.fbafelipe.lndpayrequest.data.quote.QuoteDataSourceFactory;
+import com.fbafelipe.lndpayrequest.data.quote.QuoteRepository;
 import com.fbafelipe.lndpayrequest.domain.CheckPaymentUseCase;
 import com.fbafelipe.lndpayrequest.domain.RequestPaymentUseCase;
 
@@ -22,6 +24,7 @@ public class ModuleFactory {
 	private LndNode mLndNode;
 	private OkHttpClientFactory mOkHttpClientFactory;
 	private PostPayloadReader mPostPayloadReader;
+	private QuoteRepository mQuoteRepository;
 	private ServerConfig mServerConfig;
 	
 	public static ModuleFactory getInstance() {
@@ -32,6 +35,7 @@ public class ModuleFactory {
 		if (mRequestPayment == null)
 			mRequestPayment = new RequestPaymentUseCase(
 				getDatabase(),
+				getQuoteRepository(),
 				getLndNode(),
 				getClock()
 			);
@@ -82,6 +86,17 @@ public class ModuleFactory {
 			mPostPayloadReader = new PostPayloadReader();
 		
 		return mPostPayloadReader;
+	}
+	
+	public synchronized QuoteRepository getQuoteRepository() {
+		if (mQuoteRepository == null)
+			mQuoteRepository = new QuoteRepository(
+				new QuoteDataSourceFactory(getOkHttpClientFactory()),
+				getDatabase(),
+				getClock()
+			);
+		
+		return mQuoteRepository;
 	}
 	
 	public synchronized ServerConfig getServerConfig() {

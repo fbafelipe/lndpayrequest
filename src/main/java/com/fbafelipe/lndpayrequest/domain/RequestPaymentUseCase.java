@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import com.fbafelipe.lndpayrequest.data.Clock;
 import com.fbafelipe.lndpayrequest.data.Database;
 import com.fbafelipe.lndpayrequest.data.LndNode;
+import com.fbafelipe.lndpayrequest.data.quote.QuoteRepository;
 import com.fbafelipe.lndpayrequest.domain.model.Currency;
 import com.fbafelipe.lndpayrequest.domain.model.Invoice;
 import com.fbafelipe.lndpayrequest.domain.model.PaymentRequest;
@@ -13,26 +14,32 @@ import com.fbafelipe.lndpayrequest.exception.ServerError;
 import com.fbafelipe.lndpayrequest.exception.ServerException;
 
 public class RequestPaymentUseCase {
+	private static final long SATOSHI_BITCOIN_VALUE = 100000000L;
+	
 	private Database mDatabase;
+	private QuoteRepository mQuoteRepository;
 	private LndNode mLndNode;
 	private Clock mClock;
 	
-	public RequestPaymentUseCase(Database database, LndNode lndNode, Clock clock) {
+	public RequestPaymentUseCase(Database database, QuoteRepository quoteRepository, LndNode lndNode, Clock clock) {
 		mDatabase = database;
+		mQuoteRepository = quoteRepository;
 		mLndNode = lndNode;
 		mClock = clock;
 	}
 	
-	public PaymentRequest requestPayment(String apikey, long amount, Currency currency) throws ServerException {
+	public PaymentRequest requestPayment(String apikey, Number amount, Currency currency) throws ServerException {
 		try {
 			Long accountId = mDatabase.selectAccountIdFromApikey(apikey);
 			if (accountId == null)
 				throw new ServerException(ServerError.BAD_REQUEST);
 			
-			if (amount <= 0)
+			long amountSat = convertToSatoshi(amount, currency);
+			
+			if (amountSat <= 0)
 				throw new ServerException(ServerError.BAD_REQUEST);
 			
-			Invoice invoice = mLndNode.addInvoice(amount);
+			Invoice invoice = mLndNode.addInvoice(amountSat);
 			invoice.accountId = accountId;
 			invoice.date = mClock.currentTimeMillis();
 			invoice.paid = false;
@@ -50,5 +57,17 @@ public class RequestPaymentUseCase {
 		catch (LndException e) {
 			throw new ServerException(ServerError.LND_ERROR);
 		}
+	}
+	
+	private long convertToSatoshi(Number amount, Currency currency) throws ServerException {
+		if (amount instanceof Double && !Double.isFinite((Double) amount))
+			throw new ServerException(ServerError.BAD_REQUEST);
+		
+		if (currency == Currency.SATOSHI)
+			return amount.longValue();
+		
+		double bitcoinValue = mQuoteRepository.getBitcoinValue(currency);
+		long amountSat = Math.round(amount.doubleValue() / bitcoinValue * SATOSHI_BITCOIN_VALUE);
+		return amountSat;
 	}
 }

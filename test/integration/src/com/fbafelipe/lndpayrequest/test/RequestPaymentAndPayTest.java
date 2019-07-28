@@ -77,27 +77,13 @@ public class RequestPaymentAndPayTest {
 	}
 	
 	@Test
-	public void requestPaymentBrlAndPay() throws Exception {
+	public void requestPaymentFiatAndPay() throws Exception {
 		PaymentRequest paymentRequest = requestPayment(Currency.BRL, "5");
 		
 		boolean paid = checkPaymentPaid(paymentRequest.paymentId);
 		assertFalse(paid);
 		
 		mClientLnd.payInvoice(paymentRequest.paymentRequest);
-		
-		paid = checkPaymentPaid(paymentRequest.paymentId);
-		assertTrue(paid);
-	}
-	
-	@Test
-	public void requestPaymentUsdAndPay() throws Exception {
-		PaymentRequest paymentRequest = requestPayment(Currency.USD, "1.25");
-		
-		boolean paid = checkPaymentPaid(paymentRequest.paymentId);
-		assertFalse(paid);
-		
-		mClientLnd.payInvoice(paymentRequest.paymentRequest);
-		Thread.sleep(1000);
 		
 		paid = checkPaymentPaid(paymentRequest.paymentId);
 		assertTrue(paid);

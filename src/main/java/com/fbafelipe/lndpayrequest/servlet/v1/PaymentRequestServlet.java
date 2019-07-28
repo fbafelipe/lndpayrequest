@@ -43,7 +43,7 @@ public class PaymentRequestServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String apikey;
-		long amount;
+		Number amount;
 		Currency currency;
 		
 		try {
@@ -51,7 +51,7 @@ public class PaymentRequestServlet extends HttpServlet {
 			JSONObject json = new JSONObject(body);
 			
 			apikey = json.getString("apikey");
-			amount = json.getLong("amount");
+			amount = json.getNumber("amount");
 			currency = Currency.fromIdentifier(json.getString("currency"));
 			
 			if (currency == null)
