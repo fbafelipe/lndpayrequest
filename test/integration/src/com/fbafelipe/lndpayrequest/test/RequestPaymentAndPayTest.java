@@ -1,8 +1,6 @@
 package com.fbafelipe.lndpayrequest.test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -22,9 +20,11 @@ import org.mockito.stubbing.Answer;
 
 import com.fbafelipe.lndpayrequest.data.Database;
 import com.fbafelipe.lndpayrequest.data.PostPayloadReader;
+import com.fbafelipe.lndpayrequest.data.ServerConfig;
 import com.fbafelipe.lndpayrequest.di.ModuleFactory;
 import com.fbafelipe.lndpayrequest.domain.model.Account;
 import com.fbafelipe.lndpayrequest.domain.model.Currency;
+import com.fbafelipe.lndpayrequest.domain.model.InvoiceStatus;
 import com.fbafelipe.lndpayrequest.domain.model.PaymentRequest;
 import com.fbafelipe.lndpayrequest.servlet.v1.PaymentRequestServlet;
 import com.fbafelipe.lndpayrequest.servlet.v1.PaymentStatusServlet;
@@ -35,6 +35,7 @@ public class RequestPaymentAndPayTest {
 	private PaymentRequestServlet mPaymentRequestServlet;
 	private PaymentStatusServlet mPaymentStatusServlet;
 	
+	private ServerConfig mServerConfig;
 	private Database mDatabase;
 	private PostPayloadReader mPostPayloadReader;
 	
@@ -51,6 +52,7 @@ public class RequestPaymentAndPayTest {
 		mPaymentRequestServlet = new PaymentRequestServlet(moduleFactory);
 		mPaymentStatusServlet = new PaymentStatusServlet(moduleFactory);
 		
+		mServerConfig = moduleFactory.getServerConfig();
 		mDatabase = moduleFactory.getDatabase();
 		
 		createMockUser();
@@ -67,26 +69,44 @@ public class RequestPaymentAndPayTest {
 	public void requestPaymentSatAndPay() throws Exception {
 		PaymentRequest paymentRequest = requestPayment(Currency.SATOSHI, "1000");
 		
-		boolean paid = checkPaymentPaid(paymentRequest.paymentId);
-		assertFalse(paid);
+		InvoiceStatus status = checkPaymentStatus(paymentRequest.paymentId);
+		assertEquals(InvoiceStatus.OPEN, status);
 		
-		mClientLnd.payInvoice(paymentRequest.paymentRequest);
-		
-		paid = checkPaymentPaid(paymentRequest.paymentId);
+		boolean paid = mClientLnd.payInvoice(paymentRequest.paymentRequest);
 		assertTrue(paid);
+		
+		status = checkPaymentStatus(paymentRequest.paymentId);
+		assertEquals(InvoiceStatus.PAID, status);
 	}
 	
 	@Test
 	public void requestPaymentFiatAndPay() throws Exception {
 		PaymentRequest paymentRequest = requestPayment(Currency.BRL, "5");
 		
-		boolean paid = checkPaymentPaid(paymentRequest.paymentId);
+		InvoiceStatus status = checkPaymentStatus(paymentRequest.paymentId);
+		assertEquals(InvoiceStatus.OPEN, status);
+		
+		boolean paid = mClientLnd.payInvoice(paymentRequest.paymentRequest);
+		assertTrue(paid);
+		
+		status = checkPaymentStatus(paymentRequest.paymentId);
+		assertEquals(InvoiceStatus.PAID, status);
+	}
+	
+	@Test
+	public void requestPaymentSatAndTimeout() throws Exception {
+		PaymentRequest paymentRequest = requestPayment(Currency.SATOSHI, "1000");
+		
+		InvoiceStatus status = checkPaymentStatus(paymentRequest.paymentId);
+		assertEquals(InvoiceStatus.OPEN, status);
+		
+		Thread.sleep(mServerConfig.getPaymentRequestTimeout() + 1000);
+		
+		boolean paid = mClientLnd.payInvoice(paymentRequest.paymentRequest);
 		assertFalse(paid);
 		
-		mClientLnd.payInvoice(paymentRequest.paymentRequest);
-		
-		paid = checkPaymentPaid(paymentRequest.paymentId);
-		assertTrue(paid);
+		status = checkPaymentStatus(paymentRequest.paymentId);
+		assertEquals(InvoiceStatus.TIMED_OUT, status);
 	}
 	
 	private PaymentRequest requestPayment(Currency currency, String amount) throws Exception {
@@ -116,7 +136,7 @@ public class RequestPaymentAndPayTest {
 		return paymentRequest;
 	}
 	
-	private boolean checkPaymentPaid(String paymentId) throws Exception {
+	private InvoiceStatus checkPaymentStatus(String paymentId) throws Exception {
 		HttpServletRequest request = mock(HttpServletRequest.class);
 		HttpServletResponse response = mock(HttpServletResponse.class);
 		
@@ -130,7 +150,15 @@ public class RequestPaymentAndPayTest {
 		mPaymentStatusServlet.service(request, response);
 		
 		JSONObject responseJson = new JSONObject(stringWriter.toString());
-		return responseJson.getBoolean("paid");
+		switch (responseJson.getString("status")) {
+			case "OPEN":
+				return InvoiceStatus.OPEN;
+			case "PAID":
+				return InvoiceStatus.PAID;
+			case "TIMED_OUT":
+				return InvoiceStatus.TIMED_OUT;
+		}
+		throw new RuntimeException("Unknown status: " + responseJson.getString("status"));
 	}
 	
 	private void failOnError(HttpServletResponse response) throws Exception {

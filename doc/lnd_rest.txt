@@ -8,3 +8,8 @@ The macaroon data must be sent in the header with key "Grpc-Metadata-macaroon" a
 The cert fingerprint is generated with:
 	
 	$ openssl x509 -fingerprint -sha256 -in ${LN_ROOT}/tls.cert -noout
+
+
+To check the cert expiry date:
+	
+	$ cat ${LN_ROOT}/tls.cert | openssl x509 -noout -enddate

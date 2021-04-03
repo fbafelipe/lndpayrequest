@@ -15,28 +15,37 @@ public class CheckPaymentUseCase {
 	private Database mDatabase;
 	private LndNode mLndNode;
 	
-	public CheckPaymentUseCase(Database database, LndNode lndNode) {
+	public CheckPaymentUseCase(
+			Database database,
+			LndNode lndNode
+	) {
 		mDatabase = database;
 		mLndNode = lndNode;
 	}
 	
-	public boolean isPaymentDone(String paymentId) throws ServerException {
+	public InvoiceStatus getPaymentStatus(String paymentId) throws ServerException {
 		try {
 			Invoice invoice = mDatabase.selectInvoice(paymentId);
 			if (invoice == null)
 				throw new ServerException(ServerError.BAD_REQUEST);
 			
-			if (invoice.paid)
-				return true;
+			if (invoice.status != InvoiceStatus.OPEN)
+				return invoice.status;
 			
 			LookupInvoice lookupInvoice = mLndNode.lookupInvoice(invoice);
-			if (lookupInvoice.status == InvoiceStatus.SETTLED && lookupInvoice.amountPaidSat >= invoice.amountSat) {
-				invoice.paid = true;
-				mDatabase.updatePaidInvoice(invoice);
-				return true;
+			if (lookupInvoice.status == InvoiceStatus.PAID && lookupInvoice.amountPaidSat >= invoice.amountSat) {
+				invoice.status = InvoiceStatus.PAID;
+				mDatabase.updateInvoiceStatus(invoice);
+				return InvoiceStatus.PAID;
 			}
 			
-			return false;
+			if (lookupInvoice.status == InvoiceStatus.TIMED_OUT) {
+				invoice.status = InvoiceStatus.TIMED_OUT;
+				mDatabase.updateInvoiceStatus(invoice);
+				return InvoiceStatus.TIMED_OUT;
+			}
+			
+			return InvoiceStatus.OPEN;
 		}
 		catch (SQLException e) {
 			throw new ServerException(ServerError.DATABASE_ERROR, e);

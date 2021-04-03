@@ -46,6 +46,11 @@ public class ServerConfig {
 		return getProperty("lnd.httpscert");
 	}
 	
+	// return the timeout in milliseconds
+	public long getPaymentRequestTimeout() {
+		return Long.valueOf(getProperty("paymentRequestTimeoutMs"));
+	}
+	
 	public boolean isDebug() {
 		return Boolean.parseBoolean(getProperty("debug"));
 	}

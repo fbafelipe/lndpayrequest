@@ -1,9 +1,6 @@
 package com.fbafelipe.lndpayrequest.data;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
 import javax.net.ssl.SSLPeerUnverifiedException;
@@ -23,6 +20,11 @@ import com.fbafelipe.lndpayrequest.testutils.TestEnv;
 import com.fbafelipe.lndpayrequest.util.BinaryUtils;
 
 public class LndNodeTest {
+	private static final long DEFAULT_TIMEOUT = 30000;
+	private static final long SHORT_TIMEOUT = 1000;
+	
+	private ProxyServerConfig mServerConfig;
+	
 	private LndNode mLndNode;
 	
 	private LndTestNode mClientLnd;
@@ -32,7 +34,9 @@ public class LndNodeTest {
 	public void setUp() throws Exception {
 		TestEnv.getInstance().reset();
 		
-		ModuleFactory moduleFactory = new ModuleFactory();
+		mServerConfig = new ProxyServerConfig();
+		
+		ModuleFactory moduleFactory = new TestModuleFactory();
 		
 		mLndNode = moduleFactory.getLndNode();
 		
@@ -47,6 +51,8 @@ public class LndNodeTest {
 	
 	@Test
 	public void testAddInvoice() throws Exception {
+		mServerConfig.setPaymentRequestTimeout(DEFAULT_TIMEOUT);
+		
 		Invoice invoice = mLndNode.addInvoice(1000);
 		
 		assertNotNull(invoice.paymentId);
@@ -59,18 +65,55 @@ public class LndNodeTest {
 	
 	@Test
 	public void testLookupInvoice() throws Exception {
+		mServerConfig.setPaymentRequestTimeout(DEFAULT_TIMEOUT);
+		
 		Invoice invoice = mLndNode.addInvoice(1000);
 		LookupInvoice lookupInvoice = mLndNode.lookupInvoice(invoice);
 		
 		assertEquals(InvoiceStatus.OPEN, lookupInvoice.status);
 		assertEquals(0L, (long) lookupInvoice.amountPaidSat);
 		
-		mClientLnd.payInvoice(invoice.paymentRequest);
+		boolean paid = mClientLnd.payInvoice(invoice.paymentRequest);
+		assertTrue(paid);
 		
 		lookupInvoice = mLndNode.lookupInvoice(invoice);
 		
-		assertEquals(InvoiceStatus.SETTLED, lookupInvoice.status);
+		assertEquals(InvoiceStatus.PAID, lookupInvoice.status);
 		assertEquals(1000L, (long) lookupInvoice.amountPaidSat);
+	}
+	
+	@Test
+	public void testInvoiceTimeout() throws Exception {
+		mServerConfig.setPaymentRequestTimeout(SHORT_TIMEOUT);
+		
+		Invoice invoice = mLndNode.addInvoice(1000);
+		LookupInvoice lookupInvoice = mLndNode.lookupInvoice(invoice);
+		
+		assertEquals(InvoiceStatus.OPEN, lookupInvoice.status);
+		assertEquals(0L, (long) lookupInvoice.amountPaidSat);
+		
+		Thread.sleep(SHORT_TIMEOUT + 1000);
+		
+		lookupInvoice = mLndNode.lookupInvoice(invoice);
+		
+		assertEquals(InvoiceStatus.TIMED_OUT, lookupInvoice.status);
+		assertEquals(0L, (long) lookupInvoice.amountPaidSat);
+	}
+	
+	@Test
+	public void testCantPayTimedOutInvoice() throws Exception {
+		mServerConfig.setPaymentRequestTimeout(SHORT_TIMEOUT);
+		
+		Invoice invoice = mLndNode.addInvoice(1000);
+		LookupInvoice lookupInvoice = mLndNode.lookupInvoice(invoice);
+		
+		assertEquals(InvoiceStatus.OPEN, lookupInvoice.status);
+		assertEquals(0L, (long) lookupInvoice.amountPaidSat);
+		
+		Thread.sleep(SHORT_TIMEOUT + 1000);
+		
+		boolean paid = mClientLnd.payInvoice(invoice.paymentRequest);
+		assertFalse(paid);
 	}
 	
 	@Test
@@ -93,6 +136,26 @@ public class LndNodeTest {
 		}
 		catch (LndException e) {
 			assertTrue(e.getCause() instanceof SSLPeerUnverifiedException);
+		}
+	}
+	
+	private class ProxyServerConfig extends ServerConfig {
+		private long mPaymentRequestTimeout;
+		
+		public void setPaymentRequestTimeout(long timeout) {
+			mPaymentRequestTimeout = timeout;
+		}
+		
+		@Override
+		public long getPaymentRequestTimeout() {
+			return mPaymentRequestTimeout;
+		}
+	}
+	
+	private class TestModuleFactory extends ModuleFactory {
+		@Override
+		public synchronized ServerConfig getServerConfig() {
+			return mServerConfig;
 		}
 	}
 }

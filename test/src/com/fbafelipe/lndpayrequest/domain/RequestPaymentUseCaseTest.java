@@ -19,6 +19,7 @@ import com.fbafelipe.lndpayrequest.data.LndNode;
 import com.fbafelipe.lndpayrequest.data.quote.QuoteRepository;
 import com.fbafelipe.lndpayrequest.domain.model.Currency;
 import com.fbafelipe.lndpayrequest.domain.model.Invoice;
+import com.fbafelipe.lndpayrequest.domain.model.InvoiceStatus;
 import com.fbafelipe.lndpayrequest.domain.model.PaymentRequest;
 import com.fbafelipe.lndpayrequest.exception.ServerError;
 import com.fbafelipe.lndpayrequest.exception.ServerException;
@@ -275,7 +276,7 @@ public class RequestPaymentUseCaseTest {
 				Invoice invoice = invocation.getArgument(0);
 				assertEquals(ACCOUNT_ID, invoice.accountId);
 				assertEquals(expectedAmount, invoice.amountSat);
-				assertFalse(invoice.paid);
+				assertEquals(InvoiceStatus.OPEN, invoice.status);
 				return null;
 			}
 			

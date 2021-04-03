@@ -33,14 +33,17 @@ Request:
 PAYMENT_ID - The paymentId returned on paymentrequests
 
 Response:
-paid - Boolean, true if the paymentId has been paid, false otherwise
+status - "OPEN", "PAID" or "TIMED_OUT":
+	 OPEN - waiting for payment
+	 PAID - payment received
+	 TIMED_OUT - a payment was not recevied, and the invoice timed out
 
 Example:
 Request: POST ENDPOINT/LndPayRequest/v1/paymentstatus/aaa-111-bbb-222
 
 Response: 200 OK
 {
-	"paid": true
+	"status": "PAID"
 }
 
 -----------------------------------------------------------

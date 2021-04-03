@@ -5,8 +5,6 @@ import java.io.File;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
-import com.fbafelipe.lndpayrequest.util.Utils;
-
 public class CommandUtils {
 	public static String runCommand(File workingDir, File scriptFile, String ... args) {
 		String cmdArray[] = new String[args.length + 1];
@@ -27,15 +25,16 @@ public class CommandUtils {
 			
 			ByteArrayOutputStream output = new ByteArrayOutputStream();
 			byte buffer[] = new byte[1024];
-			InputStream input = null;
-			try {
-				input = process.getInputStream();
-				int length;
+			int length;
+			
+			try (InputStream input = process.getInputStream()) {
 				while ((length = input.read(buffer)) > 0)
 					output.write(buffer, 0, length);
 			}
-			finally {
-				Utils.safeClose(input);
+			
+			try (InputStream input = process.getErrorStream()) {
+				while ((length = input.read(buffer)) > 0)
+					output.write(buffer, 0, length);
 			}
 			
 			return new String(output.toByteArray(), StandardCharsets.UTF_8.name());

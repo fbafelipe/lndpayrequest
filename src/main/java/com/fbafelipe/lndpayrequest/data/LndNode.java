@@ -45,6 +45,7 @@ public class LndNode {
 		JSONObject body = new JSONObject();
 		
 		body.put("value", String.valueOf(amountSat));
+		body.put("expiry", String.valueOf(mServerConfig.getPaymentRequestTimeout()/1000));
 		
 		JSONObject response = restPost(path, body);
 		
@@ -67,10 +68,14 @@ public class LndNode {
 		
 		JSONObject response = restGet(path);
 		
+		String stateStr = response.optString("state", "OPEN");
+		
 		try {
 			LookupInvoice lookupInvoice = new LookupInvoice();
-			if ("SETTLED".equals(response.optString("state", "OPEN")))
-				lookupInvoice.status = InvoiceStatus.SETTLED;
+			if ("SETTLED".equals(stateStr))
+				lookupInvoice.status = InvoiceStatus.PAID;
+			else if ("CANCELED".equals(stateStr))
+				lookupInvoice.status = InvoiceStatus.TIMED_OUT;
 			else
 				lookupInvoice.status = InvoiceStatus.OPEN;
 			

@@ -2,6 +2,7 @@ package com.fbafelipe.lndpayrequest.testutils;
 
 import java.io.File;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class LndTestNode {
@@ -14,10 +15,18 @@ public class LndTestNode {
 	}
 	
 	public boolean payInvoice(String paymentRequest) {
-		JSONObject response = runCommand("payinvoice", "-f", paymentRequest);
+		String response = CommandUtils.runCommand(mWorkingDir, mScriptFile, "payinvoice", "-f", "--json", paymentRequest);
 		
-		Object preimage = response.get("payment_preimage");
-		return preimage instanceof String && !((String) preimage).isEmpty();
+		try {
+			JSONObject json = new JSONObject(response);
+			return json.getString("status").equals("SUCCEEDED");
+		}
+		catch (JSONException e) {
+			if (response.contains("invoice expired"))
+				return false;
+			
+			throw new RuntimeException(e.getMessage(), e);
+		}
 	}
 	
 	public boolean isInvoicePaid(String rhash) {

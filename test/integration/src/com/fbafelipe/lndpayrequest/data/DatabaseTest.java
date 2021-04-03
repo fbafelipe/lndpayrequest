@@ -12,6 +12,7 @@ import com.fbafelipe.lndpayrequest.di.ModuleFactory;
 import com.fbafelipe.lndpayrequest.domain.model.Account;
 import com.fbafelipe.lndpayrequest.domain.model.Currency;
 import com.fbafelipe.lndpayrequest.domain.model.Invoice;
+import com.fbafelipe.lndpayrequest.domain.model.InvoiceStatus;
 import com.fbafelipe.lndpayrequest.domain.model.Quote;
 import com.fbafelipe.lndpayrequest.domain.model.Withdraw;
 import com.fbafelipe.lndpayrequest.testutils.TestEnv;
@@ -60,7 +61,7 @@ public class DatabaseTest {
 		invoice.rHash = "bbb";
 		invoice.amountSat = 1000L;
 		invoice.date = 1000000L;
-		invoice.paid = false;
+		invoice.status = InvoiceStatus.OPEN;
 		
 		mDatabase.insertInvoice(invoice);
 		Invoice result = mDatabase.selectInvoice("aaa");
@@ -70,11 +71,11 @@ public class DatabaseTest {
 		assertEquals("bbb", result.rHash);
 		assertEquals(1000L, result.amountSat);
 		assertEquals(1000000L, result.date);
-		assertEquals(false, result.paid);
+		assertEquals(InvoiceStatus.OPEN, result.status);
 		
-		invoice.paid = true;
+		invoice.status = InvoiceStatus.PAID;
 		
-		mDatabase.updatePaidInvoice(invoice);
+		mDatabase.updateInvoiceStatus(invoice);
 		result = mDatabase.selectInvoice("aaa");
 		
 		assertEquals("aaa", result.paymentId);
@@ -82,7 +83,7 @@ public class DatabaseTest {
 		assertEquals("bbb", result.rHash);
 		assertEquals(1000L, result.amountSat);
 		assertEquals(1000000L, result.date);
-		assertEquals(true, result.paid);
+		assertEquals(InvoiceStatus.PAID, result.status);
 	}
 	
 	@Test
@@ -91,12 +92,12 @@ public class DatabaseTest {
 		Account account2 = createAndInsertAccount("testuser2", "aaa2");
 		Account account3 = createAndInsertAccount("testuser3", "aaa3");
 		
-		createAndInsertInvoice(account1, 1, true);
-		createAndInsertInvoice(account1, 2, true);
-		Invoice invoice3 = createAndInsertInvoice(account1, 4, false);
-		createAndInsertInvoice(account1, 8, false);
+		createAndInsertInvoice(account1, 1, InvoiceStatus.PAID);
+		createAndInsertInvoice(account1, 2, InvoiceStatus.PAID);
+		Invoice invoice3 = createAndInsertInvoice(account1, 4, InvoiceStatus.OPEN);
+		createAndInsertInvoice(account1, 8, InvoiceStatus.TIMED_OUT);
 		
-		createAndInsertInvoice(account2, 16, false);
+		createAndInsertInvoice(account2, 16, InvoiceStatus.TIMED_OUT);
 		
 		long account1AmountSum = mDatabase.selectAccountInvoiceAmountSum(account1.id);
 		long account2AmountSum = mDatabase.selectAccountInvoiceAmountSum(account2.id);
@@ -106,8 +107,8 @@ public class DatabaseTest {
 		assertEquals(0, account2AmountSum);
 		assertEquals(0, account3AmountSum);
 		
-		invoice3.paid = true;
-		mDatabase.updatePaidInvoice(invoice3);
+		invoice3.status = InvoiceStatus.PAID;
+		mDatabase.updateInvoiceStatus(invoice3);
 		
 		account1AmountSum = mDatabase.selectAccountInvoiceAmountSum(account1.id);
 		account2AmountSum = mDatabase.selectAccountInvoiceAmountSum(account2.id);
@@ -210,7 +211,7 @@ public class DatabaseTest {
 		return account;
 	}
 	
-	private Invoice createAndInsertInvoice(Account account, long amount, boolean paid) throws Exception {
+	private Invoice createAndInsertInvoice(Account account, long amount, InvoiceStatus status) throws Exception {
 		Invoice invoice = new Invoice();
 		invoice.paymentId = UUID.randomUUID().toString();
 		invoice.accountId = account.id;
@@ -218,7 +219,7 @@ public class DatabaseTest {
 		invoice.rHash = UUID.randomUUID().toString();
 		invoice.amountSat = amount;
 		invoice.date = System.currentTimeMillis();
-		invoice.paid = paid;
+		invoice.status = status;
 		
 		mDatabase.insertInvoice(invoice);
 		

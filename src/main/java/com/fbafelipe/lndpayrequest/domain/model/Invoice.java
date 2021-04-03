@@ -7,5 +7,5 @@ public class Invoice {
 	public String paymentRequest;
 	public long amountSat;
 	public long date;
-	public boolean paid;
+	public InvoiceStatus status;
 }

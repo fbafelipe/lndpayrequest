@@ -11,6 +11,7 @@ import java.sql.Timestamp;
 import com.fbafelipe.lndpayrequest.domain.model.Account;
 import com.fbafelipe.lndpayrequest.domain.model.Currency;
 import com.fbafelipe.lndpayrequest.domain.model.Invoice;
+import com.fbafelipe.lndpayrequest.domain.model.InvoiceStatus;
 import com.fbafelipe.lndpayrequest.domain.model.Quote;
 import com.fbafelipe.lndpayrequest.domain.model.Withdraw;
 import com.fbafelipe.lndpayrequest.util.Utils;
@@ -24,7 +25,7 @@ public class Database {
 	
 	private PreparedStatement mSelectInvoiceStmt;
 	private PreparedStatement mInsertInvoiceStmt;
-	private PreparedStatement mUpdateInvoicePaidStmt;
+	private PreparedStatement mUpdateInvoiceStatusStmt;
 	
 	private PreparedStatement mSelectAccountIdFromApikeyStmt;
 	private PreparedStatement mInsertAccountStmt;
@@ -54,7 +55,7 @@ public class Database {
 				invoice.paymentRequest = resultSet.getString(3);
 				invoice.amountSat = resultSet.getLong(4);
 				invoice.date = resultSet.getTimestamp(5).getTime();
-				invoice.paid = resultSet.getBoolean(6);
+				invoice.status = InvoiceStatus.fromId(resultSet.getInt(6));
 				return invoice;
 			}
 			
@@ -70,7 +71,7 @@ public class Database {
 		mInsertInvoiceStmt.setString(4, invoice.paymentRequest);
 		mInsertInvoiceStmt.setLong(5, invoice.amountSat);
 		mInsertInvoiceStmt.setTimestamp(6, new Timestamp(invoice.date));
-		mInsertInvoiceStmt.setBoolean(7, invoice.paid);
+		mInsertInvoiceStmt.setInt(7, invoice.status.id);
 		
 		mInsertInvoiceStmt.execute();
 		
@@ -78,12 +79,12 @@ public class Database {
 		getGeneratedKey(mInsertInvoiceStmt);
 	}
 	
-	public synchronized void updatePaidInvoice(Invoice invoice) throws SQLException {
+	public synchronized void updateInvoiceStatus(Invoice invoice) throws SQLException {
 		getConnection();
-		mUpdateInvoicePaidStmt.setBoolean(1, invoice.paid);
-		mUpdateInvoicePaidStmt.setString(2, invoice.paymentId);
+		mUpdateInvoiceStatusStmt.setInt(1, invoice.status.id);
+		mUpdateInvoiceStatusStmt.setString(2, invoice.paymentId);
 		
-		mUpdateInvoicePaidStmt.execute();
+		mUpdateInvoiceStatusStmt.execute();
 	}
 	
 	public synchronized Long selectAccountIdFromApikey(String apikey) throws SQLException {
@@ -114,6 +115,7 @@ public class Database {
 	public synchronized long selectAccountInvoiceAmountSum(long accountId) throws SQLException {
 		getConnection();
 		mSelectAccountInvoiceAmountSumStmt.setLong(1, accountId);
+		mSelectAccountInvoiceAmountSumStmt.setInt(2, InvoiceStatus.PAID.id);
 		mSelectAccountInvoiceAmountSumStmt.execute();
 		
 		try (ResultSet resultSet = mSelectAccountInvoiceAmountSumStmt.getResultSet()) {
@@ -248,15 +250,15 @@ public class Database {
 	
 	private void compileStatements(Connection connection) throws SQLException {
 		mSelectInvoiceStmt = connection.prepareStatement("SELECT"
-				+ " accountId, rHash, paymentRequest, amountSat, date, paid"
+				+ " accountId, rHash, paymentRequest, amountSat, date, status"
 				+ " FROM Invoice WHERE paymentId=?");
 		
 		mInsertInvoiceStmt = connection.prepareStatement("INSERT INTO Invoice"
-				+ " (paymentId, accountId, rHash, paymentRequest, amountSat, date, paid)"
+				+ " (paymentId, accountId, rHash, paymentRequest, amountSat, date, status)"
 				+ " VALUES (?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 		
-		mUpdateInvoicePaidStmt = connection.prepareStatement("UPDATE Invoice"
-				+ " SET paid=? WHERE paymentId=?");
+		mUpdateInvoiceStatusStmt = connection.prepareStatement("UPDATE Invoice"
+				+ " SET status=? WHERE paymentId=?");
 		
 		mSelectAccountIdFromApikeyStmt = connection.prepareStatement("SELECT"
 				+ " id FROM Account WHERE apikey=?");
@@ -266,7 +268,7 @@ public class Database {
 				+ " VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 		
 		mSelectAccountInvoiceAmountSumStmt = connection.prepareStatement("SELECT SUM(amountSat)"
-				+ " FROM Invoice WHERE accountId=? AND paid is TRUE");
+				+ " FROM Invoice WHERE accountId=? AND status=?");
 		
 		mSelectAccountWithdrawAmountSumStmt = connection.prepareStatement("SELECT SUM(amountSat)"
 				+ " FROM Withdraw WHERE accountId=?");

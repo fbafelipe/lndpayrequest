@@ -17,6 +17,7 @@ import org.json.JSONObject;
 
 import com.fbafelipe.lndpayrequest.di.ModuleFactory;
 import com.fbafelipe.lndpayrequest.domain.CheckPaymentUseCase;
+import com.fbafelipe.lndpayrequest.domain.model.InvoiceStatus;
 import com.fbafelipe.lndpayrequest.util.Utils;
 
 @WebServlet("/v1/paymentstatus/*")
@@ -45,15 +46,15 @@ public class PaymentStatusServlet extends HttpServlet {
 			if (paymentId != null) {
 				Utils.prepareResponse(response);
 				
-				boolean paid = mCheckPayment.isPaymentDone(paymentId);
+				InvoiceStatus status = mCheckPayment.getPaymentStatus(paymentId);
 				
 				JSONObject json = new JSONObject();
-				json.put("paid", paid);
+				json.put("status", status.toString());
 				
 				PrintWriter output = response.getWriter();
 				output.println(json.toString());
 				
-				LOGGER.log(Level.INFO, request.getRemoteAddr() + " is checking if paymentId=" + paymentId + " is paid. paid=" + paid);
+				LOGGER.log(Level.INFO, request.getRemoteAddr() + " is checking if paymentId=" + paymentId + " is paid. status=" + status);
 			}
 			else {
 				LOGGER.log(Level.WARNING, request.getRemoteAddr() + " tried to check an invalid paymentId");

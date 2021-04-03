@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS Invoice (
 	paymentRequest  TEXT  NOT NULL,
 	amountSat  BIGINT   NOT NULL,
 	date  DATETIME NOT NULL,
-	paid  BOOLEAN  NOT NULL,
+	status  TINYINT  NOT NULL,
 PRIMARY KEY(id),
 INDEX Invoice_paymentIdIndex(paymentId),
 INDEX Invoice_accountIdIndex(accountId)

@@ -8,6 +8,7 @@ import com.fbafelipe.lndpayrequest.data.LndNode;
 import com.fbafelipe.lndpayrequest.data.quote.QuoteRepository;
 import com.fbafelipe.lndpayrequest.domain.model.Currency;
 import com.fbafelipe.lndpayrequest.domain.model.Invoice;
+import com.fbafelipe.lndpayrequest.domain.model.InvoiceStatus;
 import com.fbafelipe.lndpayrequest.domain.model.PaymentRequest;
 import com.fbafelipe.lndpayrequest.exception.LndException;
 import com.fbafelipe.lndpayrequest.exception.ServerError;
@@ -23,7 +24,12 @@ public class RequestPaymentUseCase {
 	private LndNode mLndNode;
 	private Clock mClock;
 	
-	public RequestPaymentUseCase(Database database, QuoteRepository quoteRepository, LndNode lndNode, Clock clock) {
+	public RequestPaymentUseCase(
+			Database database,
+			QuoteRepository quoteRepository,
+			LndNode lndNode,
+			Clock clock
+	) {
 		mDatabase = database;
 		mQuoteRepository = quoteRepository;
 		mLndNode = lndNode;
@@ -44,7 +50,7 @@ public class RequestPaymentUseCase {
 			Invoice invoice = mLndNode.addInvoice(amountSat);
 			invoice.accountId = accountId;
 			invoice.date = mClock.currentTimeMillis();
-			invoice.paid = false;
+			invoice.status = InvoiceStatus.OPEN;
 			
 			mDatabase.insertInvoice(invoice);
 			
