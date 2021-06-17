@@ -1,7 +1,9 @@
 build/
 .settings/
+.idea/
 test/integration/tmp
 target/
 config.cfg
 docker/LndPayRequest.war
 docker/lndpayrequest.tar
+*.iml
