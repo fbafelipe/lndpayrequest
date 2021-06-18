@@ -2,8 +2,7 @@ package com.fbafelipe.lndpayrequest.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
-import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
+import java.util.Base64;
 
 
 public class BinaryUtils {
@@ -46,6 +45,6 @@ public class BinaryUtils {
 	}
 	
 	public static String base64ToHex(String base64) {
-		return binToHex(Base64.decode(base64));
+		return binToHex(Base64.getDecoder().decode(base64));
 	}
 }
